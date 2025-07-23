@@ -16,12 +16,14 @@ import {
   ArrowRight,
   CheckCircle,
   Loader2,
-  DollarSign,
-  Heart,
-  Building,
-  ShoppingCart,
-  Factory,
-  GraduationCap,
+  Cloud,
+  Server,
+  Shield,
+  Zap,
+  Database,
+  Cog,
+  RefreshCw,
+  Award,
 } from "lucide-react";
 import Head from "next/head";
 
@@ -35,7 +37,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function AISolutionsPage() {
+export default function CloudSolutionsPage() {
   return (
     <>
       <div className="bg-black text-white relative">
@@ -69,19 +71,20 @@ export default function AISolutionsPage() {
                 variants={sectionVariants}
               >
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6">
-                  Tailored Solutions for Every Industry Challenge
+                  Cloud Excellence That Accelerates Your Digital Journey
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-                  Every industry has unique requirements and regulatory demands.
-                  Our proven solutions address specific challenges while
-                  leveraging cutting-edge technology to deliver sustainable
-                  competitive advantages across the UAE and broader region.
+                  Transform your infrastructure with enterprise-grade cloud
+                  solutions designed for rapid deployment, maximum scalability,
+                  and continuous innovation. From AWS Advanced Partner expertise
+                  to 24/7 managed services, we deliver cloud transformation that
+                  drives measurable business results.
                 </p>
               </motion.div>
             </div>
           </section>
 
-          {/* Industry Solutions Section */}
+          {/* Core Cloud Services Section */}
           <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
@@ -92,77 +95,57 @@ export default function AISolutionsPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Industry Solutions
+                  Core Cloud Services
                 </h2>
               </motion.div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                 {[
                   {
-                    icon: DollarSign,
-                    title: "Financial Services",
+                    icon: Cloud,
+                    title: "AWS Migration & Modernization",
                     features: [
-                      "Cloud banking infrastructure with regulatory compliance",
-                      "Fraud detection and risk management systems",
-                      "Digital payment platform development",
-                      "Data analytics for customer insights",
+                      "AWS Migration Acceleration Program (MAP) implementation",
+                      "Legacy system assessment and modernization roadmap",
+                      "Multi-cloud strategy development and execution",
+                      "Serverless architecture design and deployment",
                     ],
                   },
                   {
-                    icon: Heart,
-                    title: "Healthcare & Life Sciences",
+                    icon: Cog,
+                    title: "Managed Cloud Operations",
                     features: [
-                      "HIPAA-compliant cloud infrastructure",
-                      "Medical data analytics and AI diagnostics",
-                      "Telemedicine platform development",
-                      "Research data management solutions",
+                      "24/7 infrastructure monitoring and optimization",
+                      "Automated scaling and resource management",
+                      "Security compliance and governance",
+                      "Cost optimization and FinOps implementation",
                     ],
                   },
                   {
-                    icon: Building,
-                    title: "Government & Public Sector",
+                    icon: Server,
+                    title: "Cloud-Native Development",
                     features: [
-                      "Secure government cloud implementation",
-                      "Digital citizen services development",
-                      "Data governance and compliance solutions",
-                      "Smart city technology integration",
+                      "Containerization and Kubernetes orchestration",
+                      "DevSecOps pipeline implementation",
+                      "API-first architecture design",
+                      "Microservices transformation",
                     ],
                   },
                   {
-                    icon: ShoppingCart,
-                    title: "Retail & E-commerce",
+                    icon: Shield,
+                    title: "Disaster Recovery & Backup",
                     features: [
-                      "Scalable e-commerce platform development",
-                      "Inventory management and supply chain optimization",
-                      "Customer personalization engines",
-                      "Omnichannel experience platforms",
+                      "Multi-region backup strategies",
+                      "Business continuity planning",
+                      "Real-time data replication",
+                      "Recovery time optimization",
                     ],
                   },
-                  {
-                    icon: Factory,
-                    title: "Manufacturing & Logistics",
-                    features: [
-                      "IoT-enabled predictive maintenance",
-                      "Supply chain visibility and optimization",
-                      "Quality control automation",
-                      "Real-time production monitoring",
-                    ],
-                  },
-                  {
-                    icon: GraduationCap,
-                    title: "Education & Training",
-                    features: [
-                      "Learning management system development",
-                      "Virtual classroom and collaboration tools",
-                      "Student data analytics and insights",
-                      "Campus infrastructure modernization",
-                    ],
-                  },
-                ].map((industry, index) => {
-                  const IconComponent = industry.icon;
+                ].map((service, index) => {
+                  const IconComponent = service.icon;
                   return (
                     <motion.div
-                      key={industry.title}
+                      key={service.title}
                       className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
                       initial="hidden"
                       whileInView="visible"
@@ -172,10 +155,10 @@ export default function AISolutionsPage() {
                     >
                       <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
                       <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                        {industry.title}
+                        {service.title}
                       </h3>
                       <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        {industry.features.map((feature, featureIndex) => (
+                        {service.features.map((feature, featureIndex) => (
                           <li
                             key={featureIndex}
                             className="flex items-center gap-2"
@@ -198,7 +181,7 @@ export default function AISolutionsPage() {
             </div>
           </section>
 
-          {/* Solution Approach Section */}
+          {/* Technology Partnerships Section */}
           <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-gray-900/30 backdrop-blur-sm">
             <div className="container mx-auto max-w-6xl">
               <motion.div
@@ -209,12 +192,12 @@ export default function AISolutionsPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Solution Approach
+                  Technology Partnerships
                 </h2>
               </motion.div>
 
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6"
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
@@ -222,55 +205,44 @@ export default function AISolutionsPage() {
               >
                 {[
                   {
-                    number: "1",
-                    title: "Industry Assessment",
-                    description: "Deep dive into sector-specific challenges",
+                    icon: Award,
+                    title: "AWS Advanced Partner",
+                    description: "Certified expertise across all AWS services",
                   },
                   {
-                    number: "2",
-                    title: "Compliance Mapping",
-                    description: "Regulatory requirement alignment",
+                    icon: Cloud,
+                    title: "Microsoft Azure",
+                    description: "Comprehensive Azure cloud solutions",
                   },
                   {
-                    number: "3",
-                    title: "Technology Selection",
-                    description: "Best-fit solutions for industry needs",
+                    icon: Database,
+                    title: "Google Cloud Platform",
+                    description: "Multi-cloud deployment capabilities",
                   },
-                  {
-                    number: "4",
-                    title: "Phased Implementation",
-                    description: "Risk-managed deployment approach",
-                  },
-                  {
-                    number: "5",
-                    title: "Ongoing Optimization",
-                    description: "Continuous improvement and support",
-                  },
-                ].map((step, index) => (
-                  <motion.div
-                    key={step.number}
-                    className="bg-gray-800/50 p-4 md:p-6 rounded-lg text-center border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm"
-                    variants={cardVariants}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#006398] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                      <span className="font-bold text-white text-sm md:text-base">
-                        {step.number}
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-sm md:text-base mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-gray-300">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                ))}
+                ].map((partnership, index) => {
+                  const IconComponent = partnership.icon;
+                  return (
+                    <motion.div
+                      key={partnership.title}
+                      className="bg-gray-800/50 p-6 md:p-8 rounded-xl border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm text-center"
+                      variants={cardVariants}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <IconComponent className="w-12 h-12 md:w-16 md:h-16 text-[#006398] mx-auto mb-4" />
+                      <h3 className="text-lg md:text-xl font-bold mb-2">
+                        {partnership.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-gray-300">
+                        {partnership.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </div>
           </section>
 
-          {/* AI Technology Stack */}
+          {/* Cloud Benefits Section */}
           <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
@@ -281,43 +253,65 @@ export default function AISolutionsPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Our AI Technology Stack
+                  Why Choose Our Cloud Solutions
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
-                  Built on cutting-edge technologies and frameworks for maximum
-                  performance and scalability.
+                  Experience the power of enterprise-grade cloud transformation
+                  with proven results.
                 </p>
               </motion.div>
 
               <motion.div
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={sectionVariants}
               >
                 {[
-                  "TensorFlow",
-                  "PyTorch",
-                  "OpenAI GPT",
-                  "AWS SageMaker",
-                  "Hugging Face",
-                  "LangChain",
-                  "Vector Databases",
-                  "MLOps",
-                ].map((tech, index) => (
-                  <motion.div
-                    key={tech}
-                    className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm"
-                    variants={cardVariants}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Brain className="w-6 h-6 md:w-8 md:h-8 text-[#006398] mx-auto mb-2" />
-                    <span className="font-semibold text-sm md:text-base">
-                      {tech}
-                    </span>
-                  </motion.div>
-                ))}
+                  {
+                    icon: Zap,
+                    title: "Rapid Deployment",
+                    description:
+                      "Fast-track your cloud migration with proven methodologies",
+                  },
+                  {
+                    icon: Scale,
+                    title: "Maximum Scalability",
+                    description:
+                      "Auto-scaling infrastructure that grows with your business",
+                  },
+                  {
+                    icon: Shield,
+                    title: "Enterprise Security",
+                    description:
+                      "Bank-grade security with compliance and governance",
+                  },
+                  {
+                    icon: RefreshCw,
+                    title: "24/7 Support",
+                    description:
+                      "Round-the-clock monitoring and expert support",
+                  },
+                ].map((benefit, index) => {
+                  const IconComponent = benefit.icon;
+                  return (
+                    <motion.div
+                      key={benefit.title}
+                      className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm text-center"
+                      variants={cardVariants}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mx-auto mb-4" />
+                      <h3 className="text-lg md:text-xl font-bold mb-3">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-gray-300">
+                        {benefit.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </div>
           </section>
@@ -332,17 +326,17 @@ export default function AISolutionsPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Discover Your Industry Solution
+                  Ready to Accelerate Your Cloud Journey?
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-                  Let's discuss how our industry-specific solutions can drive
-                  innovation and efficiency in your organization.
+                  Transform your infrastructure with enterprise-grade cloud
+                  solutions that deliver measurable results.
                 </p>
                 <Button
                   size="lg"
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
-                  Industry Consultation
+                  Start Your Cloud Transformation
                 </Button>
               </motion.div>
             </div>
