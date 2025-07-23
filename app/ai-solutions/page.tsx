@@ -1,24 +1,33 @@
-"use client"
+"use client";
 
-import { Suspense } from "react"
-import { Canvas } from "@react-three/fiber"
-import { motion } from "framer-motion"
-import { Header } from "@/components/header"
-import { FooterContent } from "@/components/footer-content"
-import { StaticScene } from "@/components/scene/static-scene"
-import { Button } from "@/components/ui/button"
-import { Brain, Users, Scale, Gamepad2, ArrowRight, CheckCircle, Loader2 } from "lucide-react"
-import Head from "next/head"
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { Header } from "@/components/header";
+import { FooterContent } from "@/components/footer-content";
+import { StaticScene } from "@/components/scene/static-scene";
+import { Button } from "@/components/ui/button";
+import {
+  Brain,
+  Users,
+  Scale,
+  Gamepad2,
+  ArrowRight,
+  CheckCircle,
+  Loader2,
+} from "lucide-react";
+import Head from "next/head";
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-}
+};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
-}
+};
 
 export default function AISolutionsPage() {
   return (
@@ -35,7 +44,7 @@ export default function AISolutionsPage() {
             <Canvas
               shadows
               camera={{ position: [0, 0, 12], fov: 30 }}
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: "100%", height: "100%" }}
             >
               <StaticScene />
             </Canvas>
@@ -53,10 +62,13 @@ export default function AISolutionsPage() {
                 animate="visible"
                 variants={sectionVariants}
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6">AI Solutions</h1>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6">
+                  AI Solutions
+                </h1>
                 <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-                  Transform your business operations with cutting-edge artificial intelligence solutions tailored for
-                  HR, Legal, and Gaming industries.
+                  Transform your business operations with cutting-edge
+                  artificial intelligence solutions tailored for HR, Legal, and
+                  Gaming industries.
                 </p>
               </motion.div>
             </div>
@@ -76,8 +88,9 @@ export default function AISolutionsPage() {
                   Industry-Specific AI Solutions
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
-                  Discover how our AI solutions are revolutionizing key industries with intelligent automation and
-                  data-driven insights.
+                  Discover how our AI solutions are revolutionizing key
+                  industries with intelligent automation and data-driven
+                  insights.
                 </p>
               </motion.div>
 
@@ -92,30 +105,42 @@ export default function AISolutionsPage() {
                   transition={{ delay: 0.1 }}
                 >
                   <Users className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">HR Intelligence</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                    HR Intelligence
+                  </h3>
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">
-                    Streamline recruitment, employee engagement, and performance management with AI-powered insights.
+                    Streamline recruitment, employee engagement, and performance
+                    management with AI-powered insights.
                   </p>
                   <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Automated Resume Screening</span>
+                      <span className="text-xs md:text-sm">
+                        Automated Resume Screening
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Predictive Employee Analytics</span>
+                      <span className="text-xs md:text-sm">
+                        Predictive Employee Analytics
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Sentiment Analysis</span>
+                      <span className="text-xs md:text-sm">
+                        Sentiment Analysis
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Performance Optimization</span>
+                      <span className="text-xs md:text-sm">
+                        Performance Optimization
+                      </span>
                     </li>
                   </ul>
                   <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
-                    Learn More <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
+                    Learn More{" "}
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </motion.div>
 
@@ -129,30 +154,42 @@ export default function AISolutionsPage() {
                   transition={{ delay: 0.2 }}
                 >
                   <Scale className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Legal Tech</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                    Legal Tech
+                  </h3>
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">
-                    Enhance legal research, document analysis, and compliance monitoring with advanced AI capabilities.
+                    Enhance legal research, document analysis, and compliance
+                    monitoring with advanced AI capabilities.
                   </p>
                   <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Contract Analysis</span>
+                      <span className="text-xs md:text-sm">
+                        Contract Analysis
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Legal Research Automation</span>
+                      <span className="text-xs md:text-sm">
+                        Legal Research Automation
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Compliance Monitoring</span>
+                      <span className="text-xs md:text-sm">
+                        Compliance Monitoring
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Document Classification</span>
+                      <span className="text-xs md:text-sm">
+                        Document Classification
+                      </span>
                     </li>
                   </ul>
                   <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
-                    Learn More <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
+                    Learn More{" "}
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </motion.div>
 
@@ -166,31 +203,42 @@ export default function AISolutionsPage() {
                   transition={{ delay: 0.3 }}
                 >
                   <Gamepad2 className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Gaming AI</h3>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                    Gaming AI
+                  </h3>
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">
-                    Create immersive gaming experiences with intelligent NPCs, procedural content, and player behavior
-                    analysis.
+                    Create immersive gaming experiences with intelligent NPCs,
+                    procedural content, and player behavior analysis.
                   </p>
                   <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Intelligent NPCs</span>
+                      <span className="text-xs md:text-sm">
+                        Intelligent NPCs
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Procedural Content Generation</span>
+                      <span className="text-xs md:text-sm">
+                        Procedural Content Generation
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Player Behavior Analytics</span>
+                      <span className="text-xs md:text-sm">
+                        Player Behavior Analytics
+                      </span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                      <span className="text-xs md:text-sm">Dynamic Difficulty Adjustment</span>
+                      <span className="text-xs md:text-sm">
+                        Dynamic Difficulty Adjustment
+                      </span>
                     </li>
                   </ul>
                   <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
-                    Learn More <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
+                    Learn More{" "}
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </motion.div>
               </div>
@@ -207,9 +255,12 @@ export default function AISolutionsPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 variants={sectionVariants}
               >
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">Our AI Technology Stack</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
+                  Our AI Technology Stack
+                </h2>
                 <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
-                  Built on cutting-edge technologies and frameworks for maximum performance and scalability.
+                  Built on cutting-edge technologies and frameworks for maximum
+                  performance and scalability.
                 </p>
               </motion.div>
 
@@ -237,7 +288,9 @@ export default function AISolutionsPage() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <Brain className="w-6 h-6 md:w-8 md:h-8 text-[#006398] mx-auto mb-2" />
-                    <span className="font-semibold text-sm md:text-base">{tech}</span>
+                    <span className="font-semibold text-sm md:text-base">
+                      {tech}
+                    </span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -257,7 +310,8 @@ export default function AISolutionsPage() {
                   Ready to Transform Your Business with AI?
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-                  Let's discuss how our AI solutions can drive innovation and efficiency in your organization.
+                  Let's discuss how our AI solutions can drive innovation and
+                  efficiency in your organization.
                 </p>
                 <Button
                   size="lg"
@@ -276,5 +330,5 @@ export default function AISolutionsPage() {
         </div>
       </div>
     </>
-  )
+  );
 }
