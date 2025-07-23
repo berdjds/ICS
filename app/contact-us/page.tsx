@@ -13,7 +13,18 @@ import { StaticScene } from "@/components/scene/static-scene";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Loader2,
+  Globe,
+  Users,
+  Settings,
+  MessageSquare,
+} from "lucide-react";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -99,11 +110,16 @@ export default function ContactUsPage() {
               variants={sectionVariants}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-                Contact Us
+                Contact <span className="text-[#00A8E0]">Us</span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Ready to transform your business? Get in touch with our experts
-                and let's discuss your next project.
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">
+                Ready to Begin Your Digital Transformation?
+              </h2>
+              <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                Connect with our experts to discuss your specific challenges and
+                discover how our cloud, AI, and automation solutions can
+                accelerate your business growth. Schedule a consultation or
+                reach out directly.
               </p>
             </motion.div>
           </div>
@@ -260,12 +276,8 @@ export default function ContactUsPage() {
                 transition={{ delay: 0.2 }}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                  Get in Touch
+                  Contact Information
                 </h2>
-                <p className="text-gray-300 mb-8 leading-relaxed">
-                  We're here to help you navigate your digital transformation
-                  journey. Reach out to us through any of the channels below.
-                </p>
 
                 <div className="space-y-6">
                   <motion.div
@@ -275,11 +287,10 @@ export default function ContactUsPage() {
                   >
                     <MapPin className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Office Address</h3>
+                      <h3 className="font-semibold mb-1">Dubai Headquarters</h3>
                       <p className="text-gray-300">
-                        Dubai, United Arab Emirates
+                        iNTEL-CS Dubai, United Arab Emirates
                       </p>
-                      {/* <p className="text-sm text-gray-400 mt-1"></p> */}
                     </div>
                   </motion.div>
 
@@ -318,32 +329,188 @@ export default function ContactUsPage() {
                     variants={cardVariants}
                     transition={{ delay: 0.4 }}
                   >
+                    <Globe className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">Website</h3>
+                      <p className="text-gray-300">intel-cs.com</p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    variants={cardVariants}
+                    transition={{ delay: 0.5 }}
+                  >
                     <Clock className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Business Hours</h3>
                       <div className="text-gray-300 space-y-1">
-                        <p>Sunday - Thursday: 9:00 AM - 6:00 PM</p>
-                        <p>Friday - Saturday: Closed</p>
+                        <p>Sunday - Thursday: 9:00 AM - 6:00 PM (GST)</p>
+                        <p className="text-sm text-[#00A8E0]">
+                          24/7 Emergency Support Available
+                        </p>
                       </div>
-                      <p className="text-sm text-gray-400 mt-1">
-                        UAE Time (GMT+4)
-                      </p>
                     </div>
                   </motion.div>
                 </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
-                {/* Map Placeholder */}
-                <motion.div
-                  className="mt-8 bg-gray-800/50 rounded-lg border border-gray-700 h-64 flex items-center justify-center backdrop-blur-sm"
-                  variants={cardVariants}
-                  transition={{ delay: 0.5 }}
-                >
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-[#006398] mx-auto mb-2" />
-                    <p className="text-gray-300">Interactive Map</p>
-                    <p className="text-sm text-gray-400">Dubai, UAE Location</p>
+        {/* Get Started Options Section */}
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-gray-900/30 backdrop-blur-sm">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={sectionVariants}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                Get Started <span className="text-[#00A8E0]">Options</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <motion.div
+                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
+                variants={cardVariants}
+                transition={{ delay: 0.1 }}
+              >
+                <Settings className="w-12 h-12 text-[#006398] mb-6" />
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Free Cloud Assessment
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+                  Comprehensive evaluation of your current infrastructure with
+                  migration roadmap and cost analysis.
+                </p>
+                <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white mt-auto">
+                  Schedule Assessment
+                </Button>
+              </motion.div>
+
+              <motion.div
+                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
+                variants={cardVariants}
+                transition={{ delay: 0.2 }}
+              >
+                <MessageSquare className="w-12 h-12 text-[#006398] mb-6" />
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  AI Readiness Consultation
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+                  Discover AI opportunities specific to your industry and
+                  business processes.
+                </p>
+                <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white mt-auto">
+                  Book AI Consultation
+                </Button>
+              </motion.div>
+
+              <motion.div
+                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
+                variants={cardVariants}
+                transition={{ delay: 0.3 }}
+              >
+                <Users className="w-12 h-12 text-[#006398] mb-6" />
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Custom Solution Workshop
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+                  Collaborative session to design solutions aligned with your
+                  business objectives.
+                </p>
+                <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white mt-auto">
+                  Request Workshop
+                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Areas Section */}
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={sectionVariants}
+              >
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                  Service <span className="text-[#00A8E0]">Areas</span>
+                </h2>
+
+                <div className="space-y-6">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      Primary Markets
+                    </h3>
+                    <p className="text-gray-300">
+                      UAE, Saudi Arabia, Kuwait, Oman, Bahrain, Qatar
+                    </p>
                   </div>
-                </motion.div>
+
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      Expertise Delivery
+                    </h3>
+                    <p className="text-gray-300">
+                      Global (Remote and On-site Available)
+                    </p>
+                  </div>
+
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      Partnership Inquiries
+                    </h3>
+                    <p className="text-gray-300 mb-3">
+                      Interested in becoming a technology partner or reseller?
+                      Contact our partnership team to explore collaboration
+                      opportunities.
+                    </p>
+                    <p className="text-[#00A8E0]">
+                      Email: partnerships@intel-cs.com
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={sectionVariants}
+                transition={{ delay: 0.2 }}
+              >
+                <div className="bg-gradient-to-br from-[#006398]/20 to-[#00A8E0]/20 rounded-3xl p-8 border border-gray-800">
+                  <h3 className="text-2xl font-bold text-white mb-6">
+                    Support Center
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    Existing clients can access our support portal for technical
+                    assistance, resource requests, and service updates.
+                  </p>
+                  <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white mb-6">
+                    Client Portal Login
+                  </Button>
+
+                  <div className="border-t border-gray-700 pt-6">
+                    <h4 className="text-lg font-semibold text-[#00A8E0] mb-4">
+                      Let's Transform Your Business Together
+                    </h4>
+                    <Button
+                      size="lg"
+                      className="w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white py-3 text-lg font-semibold"
+                    >
+                      Start Conversation
+                    </Button>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
