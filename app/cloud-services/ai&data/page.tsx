@@ -73,7 +73,7 @@ export default function AIDataSolutionsPage() {
                 animate="visible"
                 variants={sectionVariants}
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-4 md:mb-6">
                   Intelligent Solutions That Turn Data Into Competitive
                   Advantage
                 </h1>

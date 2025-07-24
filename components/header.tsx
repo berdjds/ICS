@@ -20,6 +20,14 @@ export function Header() {
     },
   ];
 
+  const handleDropdownEnter = () => {
+    setIsCloudDropdownOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    setIsCloudDropdownOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 p-3 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
@@ -40,34 +48,26 @@ export function Header() {
               AI Solutions
             </Button>
           </Link>
-          <Link href="/about-us">
-            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
-              About Us
-            </Button>
-          </Link>
 
-          {/* Cloud Services Dropdown */}
-          <div className="relative">
-            <Button
-              className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2 flex items-center gap-1"
-              onMouseEnter={() => setIsCloudDropdownOpen(true)}
-              onMouseLeave={() => setIsCloudDropdownOpen(false)}
-            >
+          {/* Cloud Services Dropdown - Fixed Version */}
+          <div
+            className="relative"
+            onMouseEnter={handleDropdownEnter}
+            onMouseLeave={handleDropdownLeave}
+          >
+            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2 flex items-center gap-1">
               Cloud Services
               <ChevronDown className="w-4 h-4" />
             </Button>
 
             {isCloudDropdownOpen && (
-              <div
-                className="absolute top-full left-0 mt-1 w-64 bg-black/95 backdrop-blur-sm border border-gray-800 rounded-lg shadow-lg py-2"
-                onMouseEnter={() => setIsCloudDropdownOpen(true)}
-                onMouseLeave={() => setIsCloudDropdownOpen(false)}
-              >
+              <div className="absolute top-full left-0 mt-0 w-64 bg-black/95 backdrop-blur-sm border border-gray-800 rounded-lg shadow-lg py-2">
                 {cloudServices.map((service) => (
                   <Link
                     key={service.name}
                     href={service.href}
-                    className="block px-4 py-2 text-sm text-white hover:bg-[#006398]/20 hover:text-[#006398] transition-colors"
+                    className="block px-4 py-3 text-sm text-white hover:bg-[#006398]/20 hover:text-[#006398] transition-colors"
+                    onClick={() => setIsCloudDropdownOpen(false)}
                   >
                     {service.name}
                   </Link>
@@ -79,6 +79,11 @@ export function Header() {
           <Link href="/success-stories">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
               Success Stories
+            </Button>
+          </Link>
+          <Link href="/about-us">
+            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
+              About Us
             </Button>
           </Link>
           <Link href="/contact-us">

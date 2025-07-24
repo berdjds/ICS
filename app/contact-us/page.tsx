@@ -1,12 +1,10 @@
 "use client";
 
 import type React from "react";
-
-import Head from "next/head";
-import { Suspense, useState } from "react";
+import { JSX, Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import type { Variants } from "framer-motion";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Header } from "@/components/header";
 import { FooterContent } from "@/components/footer-content";
 import { StaticScene } from "@/components/scene/static-scene";
@@ -24,7 +22,10 @@ import {
   Users,
   Settings,
   MessageSquare,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
+import { sendContactEmail } from "@/lib/emailService";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -36,46 +37,108 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function ContactUsPage() {
-  const [formData, setFormData] = useState({
+// Type definitions
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
+type SubmitStatus = "success" | "error" | null;
+
+export default function ContactUsPage(): JSX.Element {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    phone: "",
-    company: "",
     subject: "",
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Form validation
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Send email using EmailJS
+      const result = await sendContactEmail(formData);
 
-    console.log("Form submitted:", formData);
-    setIsSubmitting(false);
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      subject: "",
-      message: "",
-    });
+      if (result.success) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  ): void => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const resetStatusMessage = (): void => {
+    setSubmitStatus(null);
   };
 
   return (
@@ -139,6 +202,65 @@ export default function ContactUsPage() {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                   Send us a Message
                 </h2>
+
+                {/* Status Messages */}
+                <AnimatePresence>
+                  {submitStatus === "success" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3 p-4 bg-green-900/30 border border-green-600/50 rounded-lg backdrop-blur-sm mb-6"
+                    >
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-green-400 font-medium">
+                          Message sent successfully!
+                        </p>
+                        <p className="text-green-300 text-sm">
+                          We'll get back to you within 24 hours.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={resetStatusMessage}
+                        className="ml-auto text-green-400 hover:text-green-300 transition-colors"
+                        aria-label="Close success message"
+                      >
+                        ✕
+                      </button>
+                    </motion.div>
+                  )}
+
+                  {submitStatus === "error" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-3 p-4 bg-red-900/30 border border-red-600/50 rounded-lg backdrop-blur-sm mb-6"
+                    >
+                      <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                      <div>
+                        <p className="text-red-400 font-medium">
+                          Failed to send message
+                        </p>
+                        <p className="text-red-300 text-sm">
+                          Please try again or contact us directly at
+                          info@intel-cs.com
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={resetStatusMessage}
+                        className="ml-auto text-red-400 hover:text-red-300 transition-colors"
+                        aria-label="Close error message"
+                      >
+                        ✕
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -154,9 +276,18 @@ export default function ContactUsPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
+                          errors.name
+                            ? "border-red-500 focus:border-red-500"
+                            : ""
+                        }`}
                         placeholder="Your full name"
                       />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-400">
+                          {errors.name}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label
@@ -172,45 +303,18 @@ export default function ContactUsPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
+                          errors.email
+                            ? "border-red-500 focus:border-red-500"
+                            : ""
+                        }`}
                         placeholder="your.email@company.com"
                       />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Phone Number
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
-                        placeholder="+971 XX XXX XXXX"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Company
-                      </label>
-                      <Input
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
-                        placeholder="Your company name"
-                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-400">
+                          {errors.email}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -227,9 +331,18 @@ export default function ContactUsPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                      className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
+                        errors.subject
+                          ? "border-red-500 focus:border-red-500"
+                          : ""
+                      }`}
                       placeholder="What can we help you with?"
                     />
+                    {errors.subject && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.subject}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -246,9 +359,18 @@ export default function ContactUsPage() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                      className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
+                        errors.message
+                          ? "border-red-500 focus:border-red-500"
+                          : ""
+                      }`}
                       placeholder="Tell us about your project requirements, timeline, and any specific needs..."
                     />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
 
                   <Button
@@ -257,7 +379,10 @@ export default function ContactUsPage() {
                     className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-3 text-lg font-semibold"
                   >
                     {isSubmitting ? (
-                      <>Sending...</>
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Sending...
+                      </>
                     ) : (
                       <>
                         Send Message <Send className="w-4 h-4 ml-2" />
@@ -281,7 +406,7 @@ export default function ContactUsPage() {
 
                 <div className="space-y-6">
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.1 }}
                   >
@@ -295,7 +420,7 @@ export default function ContactUsPage() {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.2 }}
                   >
@@ -310,7 +435,7 @@ export default function ContactUsPage() {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.3 }}
                   >
@@ -325,19 +450,7 @@ export default function ContactUsPage() {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
-                    variants={cardVariants}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <Globe className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Website</h3>
-                      <p className="text-gray-300">intel-cs.com</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.5 }}
                   >
@@ -446,7 +559,7 @@ export default function ContactUsPage() {
                 </h2>
 
                 <div className="space-y-6">
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm hover:border-[#006398] transition-all duration-300 rounded-2xl p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Primary Markets
                     </h3>
@@ -455,7 +568,7 @@ export default function ContactUsPage() {
                     </p>
                   </div>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Expertise Delivery
                     </h3>
@@ -464,7 +577,7 @@ export default function ContactUsPage() {
                     </p>
                   </div>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Partnership Inquiries
                     </h3>

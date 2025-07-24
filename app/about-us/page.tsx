@@ -46,7 +46,7 @@ const AboutPage = () => {
               className="text-center"
             >
               <h1 className="text-6xl md:text-8xl font-bold mb-8">
-                About <span className="text-[#00A8E0]">Intel-CS</span>
+                About <span className="text-[#00A8E0]">iNTEL-CS</span>
               </h1>
               <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-8">
                 Pioneering Digital Transformation in the UAE and Beyond
@@ -85,7 +85,7 @@ const AboutPage = () => {
                     deliver solutions that address real business challenges.
                   </p>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 mt-8">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border hover:border-[#006398] transition-all duration-300 border-gray-800 mt-8">
                     <h3 className="text-xl font-bold text-[#00A8E0] mb-4">
                       Our Mission
                     </h3>
@@ -96,7 +96,7 @@ const AboutPage = () => {
                     </p>
                   </div>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border hover:border-[#006398] transition-all duration-300 border-gray-800">
                     <h3 className="text-xl font-bold text-[#00A8E0] mb-4">
                       Our Vision
                     </h3>
@@ -399,39 +399,7 @@ const AboutPage = () => {
         </section>
 
         {/* Footer */}
-        {/* <footer className="bg-black/80 backdrop-blur-sm border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-4">
-                <span className="text-[#006398]">Intel</span>-
-                <span className="text-[#00A8E0]">CS</span>
-              </div>
-              <p className="text-gray-400 mb-6">
-                Advanced Cloud & AI Solutions
-              </p>
-              <div className="flex justify-center space-x-6">
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-[#00A8E0] transition-colors"
-                >
-                  Privacy
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-[#00A8E0] transition-colors"
-                >
-                  Terms
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-[#00A8E0] transition-colors"
-                >
-                  Support
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer> */}
+
         <FooterContent />
       </div>
     </div>
