@@ -237,7 +237,7 @@ export default function SuccessStoriesPage() {
                 ].map((testimonial, index) => (
                   <motion.div
                     key={index}
-                    className="bg-gray-800/50 p-6 md:p-8 rounded-xl border border-gray-700 backdrop-blur-sm"
+                    className="bg-gray-800/50 p-6 md:p-8 rounded-xl border hover:border-[#006398] transition-all duration-300 border-gray-700 backdrop-blur-sm"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}

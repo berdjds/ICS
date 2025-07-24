@@ -406,7 +406,7 @@ export default function ContactUsPage(): JSX.Element {
 
                 <div className="space-y-6">
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.1 }}
                   >
@@ -420,7 +420,7 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.2 }}
                   >
@@ -435,7 +435,7 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.3 }}
                   >
@@ -450,7 +450,7 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.5 }}
                   >
@@ -559,7 +559,7 @@ export default function ContactUsPage(): JSX.Element {
                 </h2>
 
                 <div className="space-y-6">
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm hover:border-[#006398] transition-all duration-300 rounded-2xl p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Primary Markets
                     </h3>
@@ -568,7 +568,7 @@ export default function ContactUsPage(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Expertise Delivery
                     </h3>
@@ -577,7 +577,7 @@ export default function ContactUsPage(): JSX.Element {
                     </p>
                   </div>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 border border-gray-800">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Partnership Inquiries
                     </h3>
