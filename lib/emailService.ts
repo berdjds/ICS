@@ -5,7 +5,7 @@ export const emailConfig = {
   templateId: process.env.NEXT_PUBLIC_TEMPLATE_ID,
   publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
 };
-console.log("EmailJS Config:", emailConfig);
+
 export const sendContactEmail = async (formData: any) => {
   try {
     const result = await emailjs.send(

@@ -11,6 +11,7 @@ import {
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const footerVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -27,6 +28,7 @@ const itemVariants: Variants = {
 };
 
 export function FooterContent() {
+  const [isMobile, setIsMobile] = useState(false);
   return (
     <motion.div
       className="text-center flex flex-col items-center gap-6 md:gap-8 max-w-4xl mx-auto w-full"
@@ -57,8 +59,10 @@ export function FooterContent() {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-3 md:mb-4">
-          <motion.div
-            className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
+          <motion.a
+            href="https://maps.app.goo.gl/inWsM7kYLExKMp729"
+            target="_black"
+            className="flex cursor-pointer flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
             variants={itemVariants}
             transition={{ delay: 0.1 }}
           >
@@ -68,13 +72,18 @@ export function FooterContent() {
                 Location
               </h4>
               <p className="text-gray-300 text-xs md:text-sm">
-                Dubai, United Arab Emirates
+                Office 2508, Concord Tower, Dubai Media City, Dubai United Arab
+                Emirates
               </p>
             </div>
-          </motion.div>
+          </motion.a>
 
           <motion.div
-            className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
+            className={`flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm ${
+              isMobile
+                ? "hover:border-[#006398] cursor-pointer"
+                : "pointer-events-none opacity-70"
+            } `}
             variants={itemVariants}
             transition={{ delay: 0.2 }}
           >
@@ -89,8 +98,10 @@ export function FooterContent() {
             </div>
           </motion.div>
 
-          <motion.div
-            className="flex flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
+          <motion.a
+            href="mailto:info@intel-cs.com"
+            target="_blank"
+            className="flex cursor-pointer flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
             variants={itemVariants}
             transition={{ delay: 0.3 }}
           >
@@ -103,7 +114,7 @@ export function FooterContent() {
                 info@intel-cs.com
               </p>
             </div>
-          </motion.div>
+          </motion.a>
         </div>
       </motion.div>
 

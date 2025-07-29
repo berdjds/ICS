@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { JSX, Suspense, useState } from "react";
+import { JSX, Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import type { Variants } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,6 +24,7 @@ import {
   MessageSquare,
   CheckCircle,
   AlertCircle,
+  Briefcase,
 } from "lucide-react";
 import { sendContactEmail } from "@/lib/emailService";
 
@@ -61,7 +62,7 @@ export default function ContactUsPage(): JSX.Element {
     subject: "",
     message: "",
   });
-
+  const [isMobile, setIsMobile] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -140,6 +141,12 @@ export default function ContactUsPage(): JSX.Element {
   const resetStatusMessage = (): void => {
     setSubmitStatus(null);
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(/Mobi|Android/i.test(navigator.userAgent));
+    }
+  }, []);
 
   return (
     <div className="bg-black text-white relative">
@@ -389,6 +396,25 @@ export default function ContactUsPage(): JSX.Element {
                       </>
                     )}
                   </Button>
+                  {/* Apply for a job */}
+                  <motion.a
+                    href="mailto:Hr@intel-cs.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center mx-auto gap-3 p-4 w-full max-w-sm hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    variants={cardVariants}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Briefcase className="w-5 h-5 text-[#006398] flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-white">
+                        Apply for a Job
+                      </h3>
+                      <p className="text-sm text-gray-400">
+                        Join our team and grow with us
+                      </p>
+                    </div>
+                  </motion.a>
                 </form>
               </motion.div>
 
@@ -405,8 +431,10 @@ export default function ContactUsPage(): JSX.Element {
                 </h2>
 
                 <div className="space-y-6">
-                  <motion.div
-                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                  <motion.a
+                    href="https://maps.app.goo.gl/inWsM7kYLExKMp729"
+                    target="_blank"
+                    className="flex cursor-pointer items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.1 }}
                   >
@@ -414,13 +442,18 @@ export default function ContactUsPage(): JSX.Element {
                     <div>
                       <h3 className="font-semibold mb-1">Dubai Headquarters</h3>
                       <p className="text-gray-300">
-                        iNTEL-CS Dubai, United Arab Emirates
+                        Office 2508, Concord Tower, Dubai Media City, Dubai
+                        United Arab Emirates
                       </p>
                     </div>
-                  </motion.div>
-
-                  <motion.div
-                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                  </motion.a>
+                  <motion.a
+                    href={isMobile ? "tel:+97148358795" : undefined}
+                    className={`flex  transition-all duration-300 items-start gap-4 p-4 rounded-lg border  backdrop-blur-sm ${
+                      isMobile
+                        ? "hover:border-[#006398] cursor-pointer"
+                        : "pointer-events-none opacity-70"
+                    } bg-gray-900/50 border-gray-800`}
                     variants={cardVariants}
                     transition={{ delay: 0.2 }}
                   >
@@ -432,9 +465,31 @@ export default function ContactUsPage(): JSX.Element {
                         Available during business hours
                       </p>
                     </div>
-                  </motion.div>
+                  </motion.a>
 
-                  <motion.div
+                  <motion.a
+                    href="https://wa.me/97145774534" // WhatsApp link without leading 0 and no special characters
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    variants={cardVariants}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <MessageSquare className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1">WhatsApp</h3>
+                      <p className="text-gray-300 flex items-center gap-2">
+                        (+971) 4 577 4534
+                        <MessageSquare className="w-4 h-4 text-green-500" />{" "}
+                        {/* WhatsApp icon */}
+                      </p>
+                      <p className="text-sm text-gray-400 mt-1">
+                        Available during business hours
+                      </p>
+                    </div>
+                  </motion.a>
+                  <motion.a
+                    href="mailto:info@intel-cs.com"
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.3 }}
@@ -447,8 +502,7 @@ export default function ContactUsPage(): JSX.Element {
                         We'll respond within 24 hours
                       </p>
                     </div>
-                  </motion.div>
-
+                  </motion.a>
                   <motion.div
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
@@ -458,7 +512,7 @@ export default function ContactUsPage(): JSX.Element {
                     <div>
                       <h3 className="font-semibold mb-1">Business Hours</h3>
                       <div className="text-gray-300 space-y-1">
-                        <p>Sunday - Thursday: 9:00 AM - 6:00 PM (GST)</p>
+                        <p>Monday - Friday: 8:30 AM - 5:30 PM (GST)</p>
                         <p className="text-sm text-[#00A8E0]">
                           24/7 Emergency Support Available
                         </p>
@@ -470,7 +524,6 @@ export default function ContactUsPage(): JSX.Element {
             </div>
           </div>
         </section>
-
         {/* Get Started Options Section */}
         <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-gray-900/30 backdrop-blur-sm">
           <div className="container mx-auto max-w-6xl">
