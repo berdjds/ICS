@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { motion, Variants } from "framer-motion"
+import { motion, Variants } from "framer-motion";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-}
+};
 
 export function GpuStreamingSection() {
   return (
@@ -24,20 +24,21 @@ export function GpuStreamingSection() {
 
           <motion.div className="mb-4 md:mb-6" variants={sectionVariants}>
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
-              Stream GPU-Powered Experiences—From Render to Reality, No Hardware, No Limits
+              Stream GPU-Powered Experiences From Render to Reality, No
+              Hardware, No Limits.
             </h3>
           </motion.div>
 
           <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed">
-            Create immersive metaverse platforms with interactive 3D environments, real-time social
-            engagement, and virtual commerce—all without requiring high-end hardware. With fully managed,
-            AI-enhanced GPU infrastructure powered by{" "}
-            <span className="text-white font-semibold">Amazon GameLift Streams</span>, you can deliver virtual
-            events, mini-games, and dynamic experiences instantly to standard devices, scaling globally with
-            ease.
+            Create immersive metaverse platforms with interactive 3D
+            environments, real-time social engagement, and virtual commerce
+            without requiring high-end hardware. With fully managed, AI-enhanced
+            GPU infrastructure powered by Amazon GameLift Streams, you can
+            deliver virtual events, mini-games, and dynamic experiences
+            instantly to standard devices, scaling globally with ease.
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

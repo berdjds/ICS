@@ -1,13 +1,66 @@
 "use client";
 import React, { Suspense } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Header } from "@/components/header";
 import { Canvas } from "@react-three/fiber";
-import { Loader2 } from "lucide-react";
+import {
+  Facebook,
+  Linkedin,
+  Loader2,
+  Mail,
+  Phone,
+  Twitter,
+} from "lucide-react";
 import { StaticScene } from "@/components/scene/static-scene";
 import { FooterContent } from "@/components/footer-content";
+import Link from "next/link";
+
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const AboutPage = () => {
+  const teamMembers = [
+    {
+      name: "Mohammad Darras",
+      title: "Chief Executive Officer",
+      subtitle: "& Managing Director",
+      image: "/team/mohammad-darras.jpg",
+      social: {
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+      },
+    },
+    {
+      name: "Ameen Abodabash",
+      title: "Chief Technology Officer",
+      subtitle: "",
+      image: "/team/ameen-abodabash.jpg",
+      social: {
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+      },
+    },
+    {
+      name: "Mohammad Mohiealdeen",
+      title: "Cloud Operational Officer",
+      subtitle: "",
+      image: "/team/mohammad-mohiealdeen.jpg",
+      social: {
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+      },
+    },
+  ];
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* 3D Background Scene - LOWEST z-index */}
@@ -375,6 +428,116 @@ const AboutPage = () => {
           </div>
         </section>
 
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              className="text-center mb-12 md:mb-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={sectionVariants}
+            >
+              <p className="text-[#006398] font-medium mb-2 tracking-wide">
+                Our Team
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white  md:mb-6 mb-6">
+                We Have A Dynamic And Genius Team To{" "}
+                <span className="text-[#006398]">Serve You.</span>
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={sectionVariants}
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  className="text-center group flex flex-col h-full"
+                  variants={cardVariants}
+                  transition={{ delay: index * 0.2 }}
+                >
+                  {/* Profile Image */}
+                  <div className="relative mb-6 inline-block">
+                    <div className="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <img
+                        src={member.image}
+                        alt={`${member.name} profile`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(
+                          e: React.SyntheticEvent<HTMLImageElement, Event>
+                        ) => {
+                          const target = e.currentTarget;
+                          const nextSibling =
+                            target.nextElementSibling as HTMLElement | null;
+
+                          target.style.display = "none";
+                          if (nextSibling) {
+                            nextSibling.style.display = "flex";
+                          }
+                        }}
+                      />
+                      {/* Fallback placeholder */}
+                      <div className="w-full h-full bg-gray-200  items-center justify-center text-gray-500 font-semibold text-lg ">
+                        {member.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </div>
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 rounded-full bg-[#006398]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* Name and Title */}
+                  <div className="mb-4 min-h-[60px] flex flex-col justify-center flex-grow">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#006398] transition-colors duration-300">
+                      {member.name}
+                    </h3>
+                    <p className="text-gray-600 font-medium leading-tight">
+                      {member.title}
+                    </p>
+                    {member.subtitle && (
+                      <p className="text-gray-600 font-medium leading-tight">
+                        {member.subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Social Media Icons */}
+                  <div className="flex justify-center space-x-4 mt-auto">
+                    <a
+                      href={member.social.facebook}
+                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      aria-label={`${member.name} Facebook`}
+                    >
+                      <Facebook className="w-5 h-5" />
+                    </a>
+                    <a
+                      href={member.social.twitter}
+                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      aria-label={`${member.name} Twitter`}
+                    >
+                      <Twitter className="w-5 h-5" />
+                    </a>
+                    <a
+                      href={member.social.linkedin}
+                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      aria-label={`${member.name} LinkedIn`}
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -385,15 +548,24 @@ const AboutPage = () => {
             >
               <h2 className="text-5xl font-bold text-white mb-8">
                 Ready to Transform Your{" "}
-                <span className="text-[#00A8E0]">Enterprise?</span>
+                <span className="text-[#00A8E0]">Business?</span>
               </h2>
               <p className="text-xl text-gray-300 mb-10">
                 Let's discuss how our advanced cloud and AI solutions can
                 accelerate your digital transformation
               </p>
-              <button className="bg-gradient-to-r from-[#006398] to-[#00A8E0] text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-[#00A8E0]/25 transition-all duration-300 transform hover:scale-105">
+              <Link
+                href={"mailto:Hr@intel-cs.com"}
+                className="bg-gradient-to-r from-[#006398] to-[#00A8E0] text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-[#00A8E0]/25 transition-all duration-300 transform hover:scale-105"
+              >
+                Meet Our Team
+              </Link>
+              <Link
+                href={"/contact-us"}
+                className="ml-4 bg-gradient-to-r from-[#006398] to-[#00A8E0] text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-[#00A8E0]/25 transition-all duration-300 transform hover:scale-105"
+              >
                 Schedule Consultation
-              </button>
+              </Link>
             </motion.div>
           </div>
         </section>
