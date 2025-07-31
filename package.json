@@ -4,19 +4,13 @@
   "private": true,
   "scripts": {
     "build": "next build",
-<<<<<<< HEAD
     "export": "next export",
-=======
->>>>>>> main
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@emailjs/browser": "^4.4.1",
-=======
->>>>>>> main
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "latest",
@@ -54,10 +48,7 @@
     "clsx": "^2.1.1",
     "cmdk": "latest",
     "date-fns": "4.1.0",
-<<<<<<< HEAD
     "dotenv": "^17.2.0",
-=======
->>>>>>> main
     "embla-carousel-react": "latest",
     "expo": "latest",
     "expo-asset": "latest",
