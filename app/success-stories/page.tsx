@@ -89,7 +89,7 @@ export default function SuccessStoriesPage() {
       description: "Oracle Partner",
     },
     {
-      name: "Palo Alto Networks",
+      name: "Palo Alto Networks.",
       logo: "/partners/palo.webp",
       description: "Palo Alto Networks Partner",
     },
