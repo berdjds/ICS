@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+<<<<<<< HEAD
   output: "export",
   reactStrictMode: false,
+=======
+>>>>>>> main
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,6 +14,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+<<<<<<< HEAD
 };
 
 export default nextConfig;
+=======
+}
+
+export default nextConfig
+>>>>>>> main

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import type React from "react";
@@ -31,10 +32,33 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
+=======
+"use client"
+
+import type React from "react"
+
+import Head from "next/head"
+import { Suspense, useState } from "react"
+import { Canvas } from "@react-three/fiber"
+import { motion } from "framer-motion"
+import { Header } from "@/components/header"
+import { FooterContent } from "@/components/footer-content"
+import { StaticScene } from "@/components/scene/static-scene"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react"
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+>>>>>>> main
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
+<<<<<<< HEAD
 };
 
 // Type definitions
@@ -140,6 +164,49 @@ export default function ContactUsPage(): JSX.Element {
   const resetStatusMessage = (): void => {
     setSubmitStatus(null);
   };
+=======
+}
+
+export default function ContactUsPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "",
+    message: "",
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    console.log("Form submitted:", formData)
+    setIsSubmitting(false)
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      subject: "",
+      message: "",
+    })
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+>>>>>>> main
 
   return (
     <div className="bg-black text-white relative">
@@ -154,7 +221,11 @@ export default function ContactUsPage(): JSX.Element {
           <Canvas
             shadows
             camera={{ position: [0, 0, 12], fov: 30 }}
+<<<<<<< HEAD
             style={{ width: "100%", height: "100%" }}
+=======
+            style={{ width: '100%', height: '100%' }}
+>>>>>>> main
           >
             <StaticScene />
           </Canvas>
@@ -166,6 +237,7 @@ export default function ContactUsPage(): JSX.Element {
         {/* Hero Section */}
         <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
           <div className="container mx-auto max-w-6xl">
+<<<<<<< HEAD
             <motion.div
               className="text-center mb-16"
               initial="hidden"
@@ -183,6 +255,12 @@ export default function ContactUsPage(): JSX.Element {
                 discover how our cloud, AI, and automation solutions can
                 accelerate your business growth. Schedule a consultation or
                 reach out directly.
+=======
+            <motion.div className="text-center mb-16" initial="hidden" animate="visible" variants={sectionVariants}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Contact Us</h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Ready to transform your business? Get in touch with our experts and let's discuss your next project.
+>>>>>>> main
               </p>
             </motion.div>
           </div>
@@ -199,6 +277,7 @@ export default function ContactUsPage(): JSX.Element {
                 viewport={{ once: true, amount: 0.3 }}
                 variants={sectionVariants}
               >
+<<<<<<< HEAD
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                   Send us a Message
                 </h2>
@@ -268,6 +347,13 @@ export default function ContactUsPage(): JSX.Element {
                         htmlFor="name"
                         className="block text-sm font-medium mb-2"
                       >
+=======
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Send us a Message</h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+>>>>>>> main
                         Full Name *
                       </label>
                       <Input
@@ -276,6 +362,7 @@ export default function ContactUsPage(): JSX.Element {
                         value={formData.name}
                         onChange={handleChange}
                         required
+<<<<<<< HEAD
                         className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
                           errors.name
                             ? "border-red-500 focus:border-red-500"
@@ -294,6 +381,14 @@ export default function ContactUsPage(): JSX.Element {
                         htmlFor="email"
                         className="block text-sm font-medium mb-2"
                       >
+=======
+                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        placeholder="Your full name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+>>>>>>> main
                         Email Address *
                       </label>
                       <Input
@@ -303,6 +398,7 @@ export default function ContactUsPage(): JSX.Element {
                         value={formData.email}
                         onChange={handleChange}
                         required
+<<<<<<< HEAD
                         className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
                           errors.email
                             ? "border-red-500 focus:border-red-500"
@@ -315,14 +411,53 @@ export default function ContactUsPage(): JSX.Element {
                           {errors.email}
                         </p>
                       )}
+=======
+                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        placeholder="your.email@company.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                        Phone Number
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        placeholder="+971 XX XXX XXXX"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium mb-2">
+                        Company
+                      </label>
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                        placeholder="Your company name"
+                      />
+>>>>>>> main
                     </div>
                   </div>
 
                   <div>
+<<<<<<< HEAD
                     <label
                       htmlFor="subject"
                       className="block text-sm font-medium mb-2"
                     >
+=======
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
+>>>>>>> main
                       Subject *
                     </label>
                     <Input
@@ -331,6 +466,7 @@ export default function ContactUsPage(): JSX.Element {
                       value={formData.subject}
                       onChange={handleChange}
                       required
+<<<<<<< HEAD
                       className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
                         errors.subject
                           ? "border-red-500 focus:border-red-500"
@@ -350,6 +486,15 @@ export default function ContactUsPage(): JSX.Element {
                       htmlFor="message"
                       className="block text-sm font-medium mb-2"
                     >
+=======
+                      className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                      placeholder="What can we help you with?"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+>>>>>>> main
                       Message *
                     </label>
                     <Textarea
@@ -359,6 +504,7 @@ export default function ContactUsPage(): JSX.Element {
                       onChange={handleChange}
                       required
                       rows={6}
+<<<<<<< HEAD
                       className={`bg-gray-800 border-gray-600 text-white focus:border-[#006398] ${
                         errors.message
                           ? "border-red-500 focus:border-red-500"
@@ -371,6 +517,11 @@ export default function ContactUsPage(): JSX.Element {
                         {errors.message}
                       </p>
                     )}
+=======
+                      className="bg-gray-800 border-gray-600 text-white focus:border-[#006398]"
+                      placeholder="Tell us about your project requirements, timeline, and any specific needs..."
+                    />
+>>>>>>> main
                   </div>
 
                   <Button
@@ -379,10 +530,14 @@ export default function ContactUsPage(): JSX.Element {
                     className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-3 text-lg font-semibold"
                   >
                     {isSubmitting ? (
+<<<<<<< HEAD
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                         Sending...
                       </>
+=======
+                      <>Sending...</>
+>>>>>>> main
                     ) : (
                       <>
                         Send Message <Send className="w-4 h-4 ml-2" />
@@ -400,6 +555,7 @@ export default function ContactUsPage(): JSX.Element {
                 variants={sectionVariants}
                 transition={{ delay: 0.2 }}
               >
+<<<<<<< HEAD
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                   Contact Information
                 </h2>
@@ -407,20 +563,41 @@ export default function ContactUsPage(): JSX.Element {
                 <div className="space-y-6">
                   <motion.div
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+=======
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Get in Touch</h2>
+                <p className="text-gray-300 mb-8 leading-relaxed">
+                  We're here to help you navigate your digital transformation journey. Reach out to us through any of
+                  the channels below.
+                </p>
+
+                <div className="space-y-6">
+                  <motion.div
+                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+>>>>>>> main
                     variants={cardVariants}
                     transition={{ delay: 0.1 }}
                   >
                     <MapPin className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
                     <div>
+<<<<<<< HEAD
                       <h3 className="font-semibold mb-1">Dubai Headquarters</h3>
                       <p className="text-gray-300">
                         iNTEL-CS Dubai, United Arab Emirates
                       </p>
+=======
+                      <h3 className="font-semibold mb-1">Office Address</h3>
+                      <p className="text-gray-300">Dubai, United Arab Emirates</p>
+                      {/* <p className="text-sm text-gray-400 mt-1"></p> */}
+>>>>>>> main
                     </div>
                   </motion.div>
 
                   <motion.div
+<<<<<<< HEAD
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+=======
+                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+>>>>>>> main
                     variants={cardVariants}
                     transition={{ delay: 0.2 }}
                   >
@@ -428,14 +605,22 @@ export default function ContactUsPage(): JSX.Element {
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
                       <p className="text-gray-300">(+971) 4 835 8795</p>
+<<<<<<< HEAD
                       <p className="text-sm text-gray-400 mt-1">
                         Available during business hours
                       </p>
+=======
+                      <p className="text-sm text-gray-400 mt-1">Available during business hours</p>
+>>>>>>> main
                     </div>
                   </motion.div>
 
                   <motion.div
+<<<<<<< HEAD
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+=======
+                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+>>>>>>> main
                     variants={cardVariants}
                     transition={{ delay: 0.3 }}
                   >
@@ -443,21 +628,32 @@ export default function ContactUsPage(): JSX.Element {
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-gray-300">info@intel-cs.com</p>
+<<<<<<< HEAD
                       <p className="text-sm text-gray-400 mt-1">
                         We'll respond within 24 hours
                       </p>
+=======
+                      <p className="text-sm text-gray-400 mt-1">We'll respond within 24 hours</p>
+>>>>>>> main
                     </div>
                   </motion.div>
 
                   <motion.div
+<<<<<<< HEAD
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.5 }}
+=======
+                    className="flex items-start gap-4 p-4 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
+                    variants={cardVariants}
+                    transition={{ delay: 0.4 }}
+>>>>>>> main
                   >
                     <Clock className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Business Hours</h3>
                       <div className="text-gray-300 space-y-1">
+<<<<<<< HEAD
                         <p>Sunday - Thursday: 9:00 AM - 6:00 PM (GST)</p>
                         <p className="text-sm text-[#00A8E0]">
                           24/7 Emergency Support Available
@@ -624,6 +820,28 @@ export default function ContactUsPage(): JSX.Element {
                     </Button>
                   </div>
                 </div>
+=======
+                        <p>Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+                        <p>Friday - Saturday: Closed</p>
+                      </div>
+                      <p className="text-sm text-gray-400 mt-1">UAE Time (GMT+4)</p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Map Placeholder */}
+                <motion.div
+                  className="mt-8 bg-gray-800/50 rounded-lg border border-gray-700 h-64 flex items-center justify-center backdrop-blur-sm"
+                  variants={cardVariants}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="text-center">
+                    <MapPin className="w-12 h-12 text-[#006398] mx-auto mb-2" />
+                    <p className="text-gray-300">Interactive Map</p>
+                    <p className="text-sm text-gray-400">Dubai, UAE Location</p>
+                  </div>
+                </motion.div>
+>>>>>>> main
               </motion.div>
             </div>
           </div>
@@ -638,12 +856,18 @@ export default function ContactUsPage(): JSX.Element {
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
             >
+<<<<<<< HEAD
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                 Need Immediate Assistance?
               </h2>
               <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
                 For urgent inquiries or immediate support, don't hesitate to
                 call us directly.
+=======
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Need Immediate Assistance?</h2>
+              <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                For urgent inquiries or immediate support, don't hesitate to call us directly.
+>>>>>>> main
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -672,5 +896,10 @@ export default function ContactUsPage(): JSX.Element {
         </section>
       </div>
     </div>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+}
+>>>>>>> main

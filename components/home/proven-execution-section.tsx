@@ -1,22 +1,39 @@
+<<<<<<< HEAD
 "use client";
 
 import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+=======
+"use client"
+
+import { motion, Variants } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+>>>>>>> main
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> main
 
 const listItemVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: { opacity: 1, x: 0 },
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> main
 
 const executionPoints = [
   {
     title: "AWS MAP Implementation",
+<<<<<<< HEAD
     desc: "Accelerated migration programs with proven methodologies and best practices",
   },
   {
@@ -28,6 +45,19 @@ const executionPoints = [
     desc: "Significantly reduced implementation risks through proven methodologies",
   },
 ];
+=======
+    desc: "Accelerated migration programs with proven methodologies and best practices"
+  },
+  {
+    title: "Certified Cloud Architects",
+    desc: "Expert team with proven track record across all project scales"
+  },
+  {
+    title: "Risk Mitigation",
+    desc: "Significantly reduced implementation risks through proven methodologies"
+  }
+]
+>>>>>>> main
 
 export function ProvenExecutionSection() {
   return (
@@ -46,12 +76,19 @@ export function ProvenExecutionSection() {
 
           <motion.div className="mb-6 md:mb-8" variants={sectionVariants}>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-4 md:mb-6 leading-relaxed">
+<<<<<<< HEAD
               We have successfully navigated challenging projects, delivering
               some of the most innovative and impactful cloud transformation
               initiatives. From AWS Migration Acceleration Program (MAP)
               implementations to rapid cloud deployments, our expert team of
               certified cloud architects consistently delivers exceptional
               solutions across all scales.
+=======
+              We have successfully navigated challenging projects, delivering some of the most innovative and
+              impactful cloud transformation initiatives. From AWS Migration Acceleration Program (MAP)
+              implementations to rapid cloud deployments, our expert team of certified cloud architects
+              consistently delivers exceptional solutions across all scales.
+>>>>>>> main
             </p>
 
             <motion.div
@@ -60,9 +97,14 @@ export function ProvenExecutionSection() {
               transition={{ delay: 0.2 }}
             >
               <p className="text-sm md:text-base text-white font-medium leading-relaxed">
+<<<<<<< HEAD
                 Our commitment to accelerated migration timelines and proven AWS
                 best practices ensures faster time-to-market while significantly
                 reducing implementation risks for our valued clients.
+=======
+                Our commitment to accelerated migration timelines and proven AWS best practices ensures faster
+                time-to-market while significantly reducing implementation risks for our valued clients.
+>>>>>>> main
               </p>
             </motion.div>
 
@@ -86,7 +128,11 @@ export function ProvenExecutionSection() {
           </motion.div>
 
           <motion.div variants={sectionVariants}>
+<<<<<<< HEAD
             <Link href="/success-stories">
+=======
+            <Link href="/contact-us">
+>>>>>>> main
               <Button
                 size="lg"
                 className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
@@ -98,5 +144,10 @@ export function ProvenExecutionSection() {
         </motion.div>
       </div>
     </section>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+}
+>>>>>>> main

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import type React from "react";
@@ -29,11 +30,37 @@ const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
+=======
+"use client"
+
+import type React from "react"
+import Head from "next/head"
+
+import { Suspense, useState } from "react"
+import { Canvas } from "@react-three/fiber"
+import { motion } from "framer-motion"
+import { Header } from "@/components/header"
+import { FooterContent } from "@/components/footer-content"
+import { StaticScene } from "@/components/scene/static-scene"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Cloud, Server, Shield, Zap, ArrowRight, CheckCircle, Users, Clock, Award, Loader2 } from "lucide-react"
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
+>>>>>>> main
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> main
 
 export default function CloudServicesPage() {
   const [formData, setFormData] = useState({
@@ -41,6 +68,7 @@ export default function CloudServicesPage() {
     email: "",
     company: "",
     message: "",
+<<<<<<< HEAD
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -57,6 +85,22 @@ export default function CloudServicesPage() {
       [e.target.name]: e.target.value,
     });
   };
+=======
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log("Form submitted:", formData)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+>>>>>>> main
 
   return (
     <div className="bg-black text-white relative">
@@ -71,7 +115,11 @@ export default function CloudServicesPage() {
           <Canvas
             shadows
             camera={{ position: [0, 0, 12], fov: 30 }}
+<<<<<<< HEAD
             style={{ width: "100%", height: "100%" }}
+=======
+            style={{ width: '100%', height: '100%' }}
+>>>>>>> main
           >
             <StaticScene />
           </Canvas>
@@ -83,6 +131,7 @@ export default function CloudServicesPage() {
         {/* Hero Section */}
         <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
           <div className="container mx-auto max-w-6xl">
+<<<<<<< HEAD
             <motion.div
               className="text-center mb-16"
               initial="hidden"
@@ -95,6 +144,13 @@ export default function CloudServicesPage() {
               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 Accelerate your digital transformation with comprehensive cloud
                 solutions, AWS migration services, and 24/7 managed support.
+=======
+            <motion.div className="text-center mb-16" initial="hidden" animate="visible" variants={sectionVariants}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Cloud Services</h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Accelerate your digital transformation with comprehensive cloud solutions, AWS migration services, and
+                24/7 managed support.
+>>>>>>> main
               </p>
             </motion.div>
           </div>
@@ -110,12 +166,18 @@ export default function CloudServicesPage() {
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
             >
+<<<<<<< HEAD
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                 Our Cloud Offerings
               </h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 From migration to management, we provide end-to-end cloud
                 solutions tailored to your business needs.
+=======
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Our Cloud Offerings</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                From migration to management, we provide end-to-end cloud solutions tailored to your business needs.
+>>>>>>> main
               </p>
             </motion.div>
 
@@ -132,8 +194,12 @@ export default function CloudServicesPage() {
                 <Cloud className="w-12 h-12 text-[#006398] mb-4" />
                 <h3 className="text-xl font-bold mb-3">AWS Migration</h3>
                 <p className="text-gray-300 text-sm mb-4">
+<<<<<<< HEAD
                   Seamless migration to AWS with minimal downtime and maximum
                   efficiency.
+=======
+                  Seamless migration to AWS with minimal downtime and maximum efficiency.
+>>>>>>> main
                 </p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
@@ -191,12 +257,17 @@ export default function CloudServicesPage() {
                 transition={{ delay: 0.3 }}
               >
                 <Shield className="w-12 h-12 text-[#006398] mb-4" />
+<<<<<<< HEAD
                 <h3 className="text-xl font-bold mb-3">
                   Security & Compliance
                 </h3>
                 <p className="text-gray-300 text-sm mb-4">
                   Enterprise-grade security with compliance frameworks.
                 </p>
+=======
+                <h3 className="text-xl font-bold mb-3">Security & Compliance</h3>
+                <p className="text-gray-300 text-sm mb-4">Enterprise-grade security with compliance frameworks.</p>
+>>>>>>> main
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-3 h-3 text-[#006398]" />
@@ -256,12 +327,18 @@ export default function CloudServicesPage() {
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
             >
+<<<<<<< HEAD
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                 Our Migration Process
               </h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 A proven 6-step methodology ensuring successful cloud
                 transformation.
+=======
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Our Migration Process</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                A proven 6-step methodology ensuring successful cloud transformation.
+>>>>>>> main
               </p>
             </motion.div>
 
@@ -273,6 +350,7 @@ export default function CloudServicesPage() {
               variants={sectionVariants}
             >
               {[
+<<<<<<< HEAD
                 {
                   step: "01",
                   title: "Assessment",
@@ -291,6 +369,14 @@ export default function CloudServicesPage() {
                   title: "Optimization",
                   desc: "Performance tuning",
                 },
+=======
+                { step: "01", title: "Assessment", desc: "Current state analysis" },
+                { step: "02", title: "Strategy", desc: "Migration planning" },
+                { step: "03", title: "Design", desc: "Architecture design" },
+                { step: "04", title: "Migration", desc: "Data & app migration" },
+                { step: "05", title: "Testing", desc: "Validation & testing" },
+                { step: "06", title: "Optimization", desc: "Performance tuning" },
+>>>>>>> main
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
@@ -298,9 +384,13 @@ export default function CloudServicesPage() {
                   variants={cardVariants}
                   transition={{ delay: index * 0.1 }}
                 >
+<<<<<<< HEAD
                   <div className="text-2xl font-bold text-[#006398] mb-2">
                     {item.step}
                   </div>
+=======
+                  <div className="text-2xl font-bold text-[#006398] mb-2">{item.step}</div>
+>>>>>>> main
                   <h4 className="font-semibold mb-1">{item.title}</h4>
                   <p className="text-xs text-gray-400">{item.desc}</p>
                 </motion.div>
@@ -348,12 +438,18 @@ export default function CloudServicesPage() {
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
             >
+<<<<<<< HEAD
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                 Ready to Start Your Cloud Journey?
               </h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 Get a free consultation and custom migration strategy for your
                 business.
+=======
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Cloud Journey?</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                Get a free consultation and custom migration strategy for your business.
+>>>>>>> main
               </p>
             </motion.div>
 
@@ -367,10 +463,14 @@ export default function CloudServicesPage() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
+<<<<<<< HEAD
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium mb-2"
                   >
+=======
+                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+>>>>>>> main
                     Name *
                   </label>
                   <Input
@@ -383,10 +483,14 @@ export default function CloudServicesPage() {
                   />
                 </div>
                 <div>
+<<<<<<< HEAD
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
                   >
+=======
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+>>>>>>> main
                     Email *
                   </label>
                   <Input
@@ -401,10 +505,14 @@ export default function CloudServicesPage() {
                 </div>
               </div>
               <div className="mb-6">
+<<<<<<< HEAD
                 <label
                   htmlFor="company"
                   className="block text-sm font-medium mb-2"
                 >
+=======
+                <label htmlFor="company" className="block text-sm font-medium mb-2">
+>>>>>>> main
                   Company
                 </label>
                 <Input
@@ -416,10 +524,14 @@ export default function CloudServicesPage() {
                 />
               </div>
               <div className="mb-6">
+<<<<<<< HEAD
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
+=======
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+>>>>>>> main
                   Project Details
                 </label>
                 <Textarea
@@ -432,10 +544,14 @@ export default function CloudServicesPage() {
                   placeholder="Tell us about your cloud migration needs..."
                 />
               </div>
+<<<<<<< HEAD
               <Button
                 type="submit"
                 className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-3"
               >
+=======
+              <Button type="submit" className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-3">
+>>>>>>> main
                 Get Free Consultation <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </motion.form>
@@ -448,5 +564,10 @@ export default function CloudServicesPage() {
         </section>
       </div>
     </div>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+}
+>>>>>>> main
