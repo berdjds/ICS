@@ -29,7 +29,7 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-3 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-10 p-3 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image
@@ -45,7 +45,7 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-2">
           <Link href="/ai-solutions">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
-              AI Solutions
+              Solutions
             </Button>
           </Link>
 
@@ -56,7 +56,7 @@ export function Header() {
             onMouseLeave={handleDropdownLeave}
           >
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2 flex items-center gap-1">
-              Cloud Services
+              Services
               <ChevronDown className="w-4 h-4" />
             </Button>
 
@@ -113,7 +113,7 @@ export function Header() {
           <nav className="flex flex-col p-4 space-y-3">
             <Link href="/ai-solutions" onClick={() => setIsMenuOpen(false)}>
               <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white rounded-full">
-                AI Solutions
+                Solutions
               </Button>
             </Link>
             <Link href="/about-us" onClick={() => setIsMenuOpen(false)}>
@@ -128,7 +128,7 @@ export function Header() {
                 className="w-full bg-[#006398] hover:bg-[#004d7a] text-white rounded-full flex items-center justify-between"
                 onClick={() => setIsMobileCloudOpen(!isMobileCloudOpen)}
               >
-                Cloud Services
+                Services
                 <ChevronDown
                   className={`w-4 h-4 transition-transform ${
                     isMobileCloudOpen ? "rotate-180" : ""

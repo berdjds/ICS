@@ -28,6 +28,7 @@ import {
   Zap,
 } from "lucide-react";
 import Head from "next/head";
+import Link from "next/link";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -64,7 +65,7 @@ export default function BusinessProcessAutomationPage() {
           <Header />
 
           {/* Hero Section */}
-          <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
+          <section className="pt-24 md:pt-32 pb-6 md:pb-2 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -86,7 +87,7 @@ export default function BusinessProcessAutomationPage() {
           </section>
 
           {/* Automation Solutions Section */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <section className="py-4  px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -107,7 +108,6 @@ export default function BusinessProcessAutomationPage() {
                     title: "Legacy System Modernization",
                     features: [
                       "VMware to containerization migration",
-                      "Mainframe modernization strategies",
                       "API integration and system connectivity",
                       "Gradual transformation roadmaps",
                     ],
@@ -117,7 +117,6 @@ export default function BusinessProcessAutomationPage() {
                     title: "Workflow Automation",
                     features: [
                       "Business process mapping and optimization",
-                      "Robotic Process Automation (RPA) implementation",
                       "Document management and approval workflows",
                       "Integration platform development",
                     ],
@@ -127,7 +126,6 @@ export default function BusinessProcessAutomationPage() {
                     title: "Custom Application Development",
                     features: [
                       "Low-code/no-code platform implementation",
-                      "Mobile application development",
                       "Web application modernization",
                       "Third-party system integrations",
                     ],
@@ -262,18 +260,18 @@ export default function BusinessProcessAutomationPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Ready to Automate Your Business Processes?
+                  Automate Your Way to Efficiency
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
                   Transform your operations with intelligent automation
                   solutions that drive efficiency and growth.
                 </p>
-                <Button
-                  size="lg"
+                <Link
+                  href={"/contact-us"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
-                  Start Your Automation Journey
-                </Button>
+                  Start Automation Assessment
+                </Link>
               </motion.div>
             </div>
           </section>

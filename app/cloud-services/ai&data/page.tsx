@@ -27,8 +27,11 @@ import {
   Heart,
   ShoppingCart,
   Factory,
+  FolderKanban,
+  BrainCircuit,
 } from "lucide-react";
 import Head from "next/head";
+import Link from "next/link";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -65,7 +68,7 @@ export default function AIDataSolutionsPage() {
           <Header />
 
           {/* Hero Section */}
-          <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
+          <section className="pt-24 md:pt-32 pb-6 md:pb-2  px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -89,7 +92,7 @@ export default function AIDataSolutionsPage() {
           </section>
 
           {/* AI-Powered Services Section */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <section className="pb-4">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -107,12 +110,9 @@ export default function AIDataSolutionsPage() {
                 {[
                   {
                     icon: Cpu,
-                    title: "GPU-Powered Experiences",
+                    title: "High-Performance Computing",
                     features: [
                       "Amazon GameLift Streams implementation",
-                      "Metaverse platform development with 3D environments",
-                      "Real-time social engagement solutions",
-                      "Virtual commerce and event platforms",
                       "Scalable streaming without hardware limitations",
                     ],
                   },
@@ -138,12 +138,12 @@ export default function AIDataSolutionsPage() {
                   },
                   {
                     icon: Brain,
-                    title: "AI Infrastructure",
+                    title: "Cloud AI Infrastructure",
                     features: [
-                      "GPU cluster management and optimization",
-                      "Model training and deployment pipelines",
+                      "LLM Training",
+                      "LLM Fine-tuning",
+
                       "MLOps implementation and monitoring",
-                      "Edge AI deployment strategies",
                     ],
                   },
                 ].map((service, index) => {
@@ -210,12 +210,6 @@ export default function AIDataSolutionsPage() {
               >
                 {[
                   {
-                    icon: DollarSign,
-                    title: "Financial Services",
-                    description:
-                      "Fraud detection, risk assessment, algorithmic trading",
-                  },
-                  {
                     icon: Heart,
                     title: "Healthcare",
                     description:
@@ -233,12 +227,23 @@ export default function AIDataSolutionsPage() {
                     description:
                       "Predictive maintenance, quality control automation",
                   },
+                  {
+                    icon: FolderKanban,
+                    title: "Real Estate & Property Management",
+                    description: "Interactive Property Showcase",
+                  },
+                  {
+                    icon: BrainCircuit,
+                    title: "Financial/Insurance Services",
+                    description:
+                      "AI-powered claim processing, predictive risk modelling",
+                  },
                 ].map((application, index) => {
                   const IconComponent = application.icon;
                   return (
                     <motion.div
                       key={application.title}
-                      className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm text-center"
+                      className="bg-gray-800/50 p-3 rounded-xl border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm text-center"
                       variants={cardVariants}
                       transition={{ delay: index * 0.1 }}
                     >
@@ -272,12 +277,12 @@ export default function AIDataSolutionsPage() {
                   Transform your business with intelligent AI and data solutions
                   that deliver competitive advantage.
                 </p>
-                <Button
-                  size="lg"
+                <Link
+                  href={"/contact-us"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
-                  Start Your AI Journey
-                </Button>
+                  Request AI Consultation
+                </Link>
               </motion.div>
             </div>
           </section>

@@ -22,8 +22,10 @@ import {
   ShoppingCart,
   Factory,
   GraduationCap,
+  FolderKanban,
 } from "lucide-react";
 import Head from "next/head";
+import Link from "next/link";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -60,7 +62,7 @@ export default function AISolutionsPage() {
           <Header />
 
           {/* Hero Section */}
-          <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
+          <section className="pt-24 md:pt-32 pb-6 md:pb-2 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -82,7 +84,7 @@ export default function AISolutionsPage() {
           </section>
 
           {/* Industry Solutions Section */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <section className="py-4 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -103,31 +105,22 @@ export default function AISolutionsPage() {
                     title: "Financial Services",
                     features: [
                       "Cloud banking infrastructure with regulatory compliance",
-                      "Fraud detection and risk management systems",
+                      "AI-powered claims processing & Fraud detection",
                       "Digital payment platform development",
                       "Data analytics for customer insights",
                     ],
                   },
                   {
-                    icon: Heart,
-                    title: "Healthcare & Life Sciences",
+                    icon: FolderKanban,
+                    title: "Real Estate & Property Management ",
                     features: [
-                      "HIPAA-compliant cloud infrastructure",
-                      "Medical data analytics and AI diagnostics",
-                      "Telemedicine platform development",
-                      "Research data management solutions",
+                      "Cloud modernization",
+                      "Interactive Property Showcase",
+                      "Tenant Portal Migration",
+                      "Operations Dashboards",
                     ],
                   },
-                  {
-                    icon: Building,
-                    title: "Government & Public Sector",
-                    features: [
-                      "Secure government cloud implementation",
-                      "Digital citizen services development",
-                      "Data governance and compliance solutions",
-                      "Smart city technology integration",
-                    ],
-                  },
+
                   {
                     icon: ShoppingCart,
                     title: "Retail & E-commerce",
@@ -269,60 +262,6 @@ export default function AISolutionsPage() {
               </motion.div>
             </div>
           </section>
-
-          {/* AI Technology Stack */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
-            <div className="container mx-auto max-w-6xl">
-              <motion.div
-                className="text-center mb-12 md:mb-16"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={sectionVariants}
-              >
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Our AI Technology Stack
-                </h2>
-                <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
-                  Built on cutting-edge technologies and frameworks for maximum
-                  performance and scalability.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={sectionVariants}
-              >
-                {[
-                  "TensorFlow",
-                  "PyTorch",
-                  "OpenAI GPT",
-                  "AWS SageMaker",
-                  "Hugging Face",
-                  "LangChain",
-                  "Vector Databases",
-                  "MLOps",
-                ].map((tech, index) => (
-                  <motion.div
-                    key={tech}
-                    className="bg-gray-800/50 p-3 md:p-4 rounded-lg text-center border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm"
-                    variants={cardVariants}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Brain className="w-6 h-6 md:w-8 md:h-8 text-[#006398] mx-auto mb-2" />
-                    <span className="font-semibold text-sm md:text-base">
-                      {tech}
-                    </span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* CTA Section */}
           <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-4xl text-center">
               <motion.div
@@ -335,19 +274,17 @@ export default function AISolutionsPage() {
                   Discover Your Industry Solution
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-                  Let's discuss how our industry-specific solutions can drive
-                  innovation and efficiency in your organization.
+                  Transform your operations with intelligent Industry solutions.
                 </p>
-                <Button
-                  size="lg"
+                <Link
+                  href={"/contact-us"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
                   Industry Consultation
-                </Button>
+                </Link>
               </motion.div>
             </div>
           </section>
-
           {/* Footer */}
           <section className="py-12 md:py-20 px-4 md:px-8">
             <FooterContent />

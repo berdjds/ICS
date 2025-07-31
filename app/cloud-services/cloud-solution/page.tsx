@@ -26,6 +26,7 @@ import {
   Award,
 } from "lucide-react";
 import Head from "next/head";
+import Link from "next/link";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -62,7 +63,7 @@ export default function CloudSolutionsPage() {
           <Header />
 
           {/* Hero Section */}
-          <section className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8 lg:px-16">
+          <section className="pt-24 md:pt-32 pb-6 md:pb-2 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -85,7 +86,7 @@ export default function CloudSolutionsPage() {
           </section>
 
           {/* Core Cloud Services Section */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
+          <section className="py-4 px-4 md:px-8 lg:px-16">
             <div className="container mx-auto max-w-6xl">
               <motion.div
                 className="text-center mb-12 md:mb-16"
@@ -105,40 +106,40 @@ export default function CloudSolutionsPage() {
                     icon: Cloud,
                     title: "AWS Migration & Modernization",
                     features: [
-                      "AWS Migration Acceleration Program (MAP) implementation",
-                      "Legacy system assessment and modernization roadmap",
-                      "Multi-cloud strategy development and execution",
-                      "Serverless architecture design and deployment",
+                      "AWS Migration Acceleration Program (MAP) implementation.",
+                      "Comprehensive assessment of your current IT infrastructure and Legacy systems.",
+                      "Multi-cloud strategy development and execution.",
+                      "Infrastructure Modernization through Serverless and Microservices Architecture.",
                     ],
                   },
                   {
                     icon: Cog,
                     title: "Managed Cloud Operations",
                     features: [
-                      "24/7 infrastructure monitoring and optimization",
-                      "Automated scaling and resource management",
-                      "Security compliance and governance",
-                      "Cost optimization and FinOps implementation",
+                      "24/7 Advanced Cloud infrastructure monitoring.",
+                      "Cloud Infrastructure Managment and support.",
+                      "Security compliance and governance.",
+                      "Cost optimization and FinOps implementation.",
                     ],
                   },
                   {
                     icon: Server,
-                    title: "Cloud-Native Development",
+                    title: "Cloud Modernization",
                     features: [
-                      "Containerization and Kubernetes orchestration",
-                      "DevSecOps pipeline implementation",
-                      "API-first architecture design",
-                      "Microservices transformation",
+                      "Containerization and Kubernetes orchestration.",
+                      "DevSecOps pipeline implementation.",
+                      "CI/CD and DevOps solutions.",
+                      "Microservices transformation.",
                     ],
                   },
                   {
                     icon: Shield,
                     title: "Disaster Recovery & Backup",
                     features: [
-                      "Multi-region backup strategies",
-                      "Business continuity planning",
-                      "Real-time data replication",
-                      "Recovery time optimization",
+                      "Multi-region backup strategies.",
+                      "Business continuity and disaster recovery planning.",
+                      "Real-time data replication.",
+                      "Recovery time optimization.",
                     ],
                   },
                 ].map((service, index) => {
@@ -326,18 +327,18 @@ export default function CloudSolutionsPage() {
                 variants={sectionVariants}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Ready to Accelerate Your Cloud Journey?
+                  Ready to Transform Your Cloud Infrastructure?
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
                   Transform your infrastructure with enterprise-grade cloud
                   solutions that deliver measurable results.
                 </p>
-                <Button
-                  size="lg"
+                <Link
+                  href={"/contact-us"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
-                  Start Your Cloud Transformation
-                </Button>
+                  Schedule Cloud Assessment
+                </Link>
               </motion.div>
             </div>
           </section>
