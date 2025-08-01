@@ -31,10 +31,8 @@ const AboutPage = () => {
       name: "Mohammad Darras",
       title: "Chief Executive Officer",
       subtitle: "& Managing Director",
-      image: "/team/mohammad-darras.jpg",
+      image: "/team/MD.jpg",
       social: {
-        facebook: "#",
-        twitter: "#",
         linkedin: "#",
       },
     },
@@ -42,10 +40,8 @@ const AboutPage = () => {
       name: "Ameen Abodabash",
       title: "Chief Technology Officer",
       subtitle: "",
-      image: "/team/ameen-abodabash.jpg",
+      image: "/team/AA.jpg",
       social: {
-        facebook: "#",
-        twitter: "#",
         linkedin: "#",
       },
     },
@@ -55,8 +51,6 @@ const AboutPage = () => {
       subtitle: "",
       image: "/team/mohammad-mohiealdeen.jpg",
       social: {
-        facebook: "#",
-        twitter: "#",
         linkedin: "#",
       },
     },
@@ -437,10 +431,10 @@ const AboutPage = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={sectionVariants}
             >
-              <p className="text-[#006398] font-medium mb-2 tracking-wide">
+              <p className="text-[#006398] font-bold mb-10 tracking-wide text-2xl">
                 Our Team
               </p>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white  md:mb-6 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-6 mb-6">
                 We Have A Dynamic And Genius Team To{" "}
                 <span className="text-[#006398]">Serve You.</span>
               </h2>
@@ -490,40 +484,28 @@ const AboutPage = () => {
                     </div>
 
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 rounded-full bg-[#006398]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 rounded-full  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
                   {/* Name and Title */}
-                  <div className="mb-4 min-h-[60px] flex flex-col justify-center flex-grow">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#006398] transition-colors duration-300">
-                      {member.name}
-                    </h3>
-                    <p className="text-gray-600 font-medium leading-tight">
-                      {member.title}
-                    </p>
-                    {member.subtitle && (
-                      <p className="text-gray-600 font-medium leading-tight">
-                        {member.subtitle}
+                  <div className="mb-4 flex flex-col justify-between flex-grow">
+                    <div className="flex-grow flex flex-col justify-center">
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#006398] transition-colors duration-300 text-center">
+                        {member.name}
+                      </h3>
+                      <p className="text-gray-400 font-medium leading-tight text-center">
+                        {member.title}
                       </p>
-                    )}
+                      {member.subtitle && (
+                        <p className="text-gray-400 font-medium leading-tight text-center">
+                          {member.subtitle}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   {/* Social Media Icons */}
                   <div className="flex justify-center space-x-4 mt-auto">
-                    <a
-                      href={member.social.facebook}
-                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                      aria-label={`${member.name} Facebook`}
-                    >
-                      <Facebook className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={member.social.twitter}
-                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                      aria-label={`${member.name} Twitter`}
-                    >
-                      <Twitter className="w-5 h-5" />
-                    </a>
                     <a
                       href={member.social.linkedin}
                       className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"

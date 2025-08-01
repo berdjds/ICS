@@ -29,20 +29,33 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 p-3 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-10 p-1 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logos/iNTEL-CS logo-02.png"
+            src="/logos/__white logo.png"
             alt="Intel CS Logo"
-            width={180}
-            height={120}
-            className="object-contain w-[140px] md:w-[160px] lg:w-[180px] h-auto"
+            width={200}
+            height={160}
+            // className="object-contain w-[140px] md:w-[160px] lg:w-[180px] h-auto"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2">
+          <Link
+            href="https://intel-cs-support.atlassian.net/servicedesk/customer/user/login?destination=portals"
+            className="flex items-center"
+            target="_blank"
+          >
+            <Image
+              src="/support.png"
+              alt="Intel CS support"
+              width={60}
+              height={50}
+              className="mr-6"
+            />
+          </Link>
           <Link href="/ai-solutions">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
               Solutions

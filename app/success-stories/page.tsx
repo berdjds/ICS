@@ -90,12 +90,12 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "Palo Alto Networks",
-      logo: "/partners/palo.webp",
+      logo: "/partners/palo2.png",
       description: "Palo Alto Networks Partner",
     },
     {
       name: "Fortinet",
-      logo: "/partners/fortinet-partner.png",
+      logo: "/partners/fortinet-logo.png",
       description: "Fortinet Partner",
     },
     {
@@ -105,7 +105,7 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "Commvault",
-      logo: "/partners/commvault.webp",
+      logo: "/partners/commvault.png",
       description: "Commvault Partner",
     },
     {
@@ -115,7 +115,7 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "AFI.AI",
-      logo: "/partners/afi-ai-partner.png",
+      logo: "/partners/afi.png",
       description: "AFI.AI Partner",
     },
     {
@@ -125,7 +125,7 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "Nasuni",
-      logo: "/partners/nasuni-logo-primary-blue-RGB.png",
+      logo: "/partners/nasuni2.png",
       description: "Nasuni Partner",
     },
   ];
@@ -133,7 +133,7 @@ export default function SuccessStoriesPage() {
   const customers = [
     {
       name: "Binghatti",
-      logo: "/customers/binghatti-logo.png",
+      logo: "/customers/Binghatti.png",
       projects: [
         "Pixel Interactive Property Showcase",
         "Infrastructure Cloud Modernization",
@@ -171,7 +171,7 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "EGMA Lense",
-      logo: "/customers/egma-lense-logo.png",
+      logo: "/customers/EGMA.png",
       projects: ["Infrastructure Migration and Modernization"],
     },
   ];
@@ -426,9 +426,9 @@ export default function SuccessStoriesPage() {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
                   Client Testimonials
                 </h2>
-                <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
+                <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-4">
                   Hear from our satisfied clients about their transformation
-                  journey with Intel CS
+                  journey with iNTEL-CS
                 </p>
               </motion.div>
 
@@ -577,7 +577,7 @@ export default function SuccessStoriesPage() {
                   {testimonials.map((testimonial, index) => (
                     <div
                       key={index}
-                      className="text-gray-500 font-semibold text-sm hover:text-[#006398] transition-colors cursor-pointer"
+                      className="text-white font-semibold text-sm hover:text-[#006398] transition-colors cursor-pointer"
                       onClick={() => goToSlide(index)}
                     >
                       {testimonial.company}
@@ -689,22 +689,7 @@ export default function SuccessStoriesPage() {
                         </h3>
                       </div>
 
-                      {/* Projects Section */}
-                      <div className="flex-grow">
-                        <ul className="space-y-3">
-                          {customer.projects.map((project, projectIndex) => (
-                            <li
-                              key={projectIndex}
-                              className="flex items-start gap-3"
-                            >
-                              <CheckCircle className="w-4 h-4 text-[#006398] flex-shrink-0 mt-0.5" />
-                              <span className="text-sm text-gray-300 leading-relaxed">
-                                {project}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      
                     </div>
                   </motion.div>
                 ))}

@@ -42,7 +42,7 @@ export function FooterContent() {
         className="flex flex-col items-center gap-3 md:gap-4"
       >
         <Image
-          src="/logos/iNTEL-CS logo-02.png"
+          src="/logos/__white logo.png"
           alt="Intel CS Logo"
           width={180}
           height={120}
@@ -99,8 +99,7 @@ export function FooterContent() {
           </motion.div>
 
           <motion.a
-            href="mailto:info@intel-cs.com"
-            target="_blank"
+            href="/contact-us"
             className="flex cursor-pointer flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
             variants={itemVariants}
             transition={{ delay: 0.3 }}
@@ -119,13 +118,13 @@ export function FooterContent() {
       </motion.div>
 
       <motion.div variants={itemVariants} className="flex gap-4 md:gap-6">
-        <Link href="https://www.instagram.com/intelligencecloudsphere/">
+        <Link href="https://www.instagram.com/intelligencecloudsphere/" target="_blank">
           <Instagram className="w-5 h-5 md:w-6 md:h-6 hover:text-[#006398] transition-colors cursor-pointer" />
         </Link>
-        <Link href="https://www.linkedin.com/company/intel-cs">
+        <Link href="https://www.linkedin.com/company/intel-cs" target="_blank">
           <Linkedin className="w-5 h-5 md:w-6 md:h-6 hover:text-[#006398] transition-colors cursor-pointer" />
         </Link>
-        <Link href="https://www.youtube.com/@iNTEL-CS-w9e">
+        <Link href="https://www.youtube.com/@iNTEL-CS-w9e" target="_blank">
           <Youtube className="w-5 h-5 md:w-6 md:h-6 hover:text-[#006398] transition-colors cursor-pointer" />
         </Link>
       </motion.div>
