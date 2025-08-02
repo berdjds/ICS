@@ -400,7 +400,6 @@ export default function ContactUsPage(): JSX.Element {
                   {/* Apply for a job */}
                   <motion.a
                     href="/form/job"
-                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center mx-auto gap-3 p-4 w-full max-w-sm hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
