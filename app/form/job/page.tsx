@@ -69,7 +69,7 @@ const cardVariants = {
 };
 
 const ComprehensiveForms: React.FC = () => {
-  const [activeForm, setActiveForm] = useState<string>("contact");
+  const [activeForm, setActiveForm] = useState<string>("career");
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>("");
@@ -335,10 +335,8 @@ const ComprehensiveForms: React.FC = () => {
 
   // Form configuration
   const formTabs = [
-    { id: "contact", label: "Contact Us", icon: Send },
     { id: "consultation", label: "Free Consultation", icon: Calendar },
     { id: "career", label: "Join Our Team", icon: Briefcase },
-    { id: "newsletter", label: "Newsletter", icon: Mail },
   ];
 
   const inquiryTypes = ["Support", "Sales", "Partnership", "Careers"];
@@ -437,7 +435,7 @@ const ComprehensiveForms: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveForm(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 m-1 ${
+                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 m-1  ${
                     activeForm === tab.id
                       ? "bg-[#006398] text-white shadow-md"
                       : "text-gray-600 hover:bg-gray-100"
@@ -455,200 +453,6 @@ const ComprehensiveForms: React.FC = () => {
           {/* Forms Container */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <AnimatePresence mode="wait">
-              {/* Contact Form */}
-              {activeForm === "contact" && (
-                <motion.div
-                  key="contact"
-                  variants={sectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  <div className="flex items-center gap-3 mb-8">
-                    <Send className="w-6 h-6 text-[#006398]" />
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Contact Us
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          <User className="w-4 h-4 inline mr-2" />
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={(e) =>
-                            handleInputChange("name", e.target.value)
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.name
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="Enter your full name"
-                        />
-                        {errors.name && (
-                          <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                            <svg
-                              className="w-4 h-4"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          <Mail className="w-4 h-4 inline mr-2" />
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={(e) =>
-                            handleInputChange("email", e.target.value)
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.email
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="your.email@company.com"
-                        />
-                        {errors.email && (
-                          <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                            <svg
-                              className="w-4 h-4"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            {errors.email}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          <Building className="w-4 h-4 inline mr-2" />
-                          Company
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.company}
-                          onChange={(e) =>
-                            handleInputChange("company", e.target.value)
-                          }
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                          placeholder="Your company name"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          <Phone className="w-4 h-4 inline mr-2" />
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) =>
-                            handleInputChange("phone", e.target.value)
-                          }
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                          placeholder="+971 XX XXX XXXX"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Inquiry Type
-                      </label>
-                      <select
-                        value={formData.inquiryType}
-                        onChange={(e) =>
-                          handleInputChange("inquiryType", e.target.value)
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                      >
-                        <option value="">Select inquiry type</option>
-                        {inquiryTypes.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        <MessageSquare className="w-4 h-4 inline mr-2" />
-                        Message *
-                      </label>
-                      <textarea
-                        name="message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) =>
-                          handleInputChange("message", e.target.value)
-                        }
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all resize-none ${
-                          errors.message
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                        placeholder="Tell us about your project or requirements..."
-                      />
-                      {errors.message && (
-                        <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                          <svg
-                            className="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {errors.message}
-                        </p>
-                      )}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={submitForm}
-                      className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-5 h-5" />
-                      Send Message
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
               {/* Consultation Form */}
               {activeForm === "consultation" && (
                 <motion.div
@@ -876,7 +680,7 @@ const ComprehensiveForms: React.FC = () => {
 
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Contact Information *
+                          Email *
                         </label>
                         <input
                           type="text"
@@ -890,7 +694,7 @@ const ComprehensiveForms: React.FC = () => {
                               ? "border-red-500 bg-red-50"
                               : "border-gray-300"
                           }`}
-                          placeholder="Email or phone number"
+                          placeholder="Enter your Email"
                         />
                         {errors.contactInfo && (
                           <p className="mt-1 text-sm text-red-600">
@@ -1033,131 +837,6 @@ const ComprehensiveForms: React.FC = () => {
                     >
                       <Briefcase className="w-5 h-5" />
                       Submit Application
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Newsletter Signup */}
-              {activeForm === "newsletter" && (
-                <motion.div
-                  key="newsletter"
-                  variants={sectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  <div className="flex items-center gap-3 mb-8">
-                    <Mail className="w-6 h-6 text-[#006398]" />
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Subscribe to Our Newsletter
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        name="newsletterEmail"
-                        value={formData.newsletterEmail}
-                        onChange={(e) =>
-                          handleInputChange("newsletterEmail", e.target.value)
-                        }
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                          errors.newsletterEmail
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                        placeholder="your.email@company.com"
-                      />
-                      {errors.newsletterEmail && (
-                        <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                          <svg
-                            className="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {errors.newsletterEmail}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Industry Preference
-                      </label>
-                      <select
-                        value={formData.industryPreference}
-                        onChange={(e) =>
-                          handleInputChange(
-                            "industryPreference",
-                            e.target.value
-                          )
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                      >
-                        <option value="">Select your industry</option>
-                        {industries.map((industry) => (
-                          <option key={industry} value={industry}>
-                            {industry}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-4">
-                        Topics of Interest (Select all that apply)
-                      </label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {topics.map((topic) => (
-                          <label
-                            key={topic}
-                            className="flex items-center gap-2 cursor-pointer"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={formData.topicPreference.includes(topic)}
-                              onChange={(e) => {
-                                const current = formData.topicPreference;
-                                if (e.target.checked) {
-                                  handleInputChange("topicPreference", [
-                                    ...current,
-                                    topic,
-                                  ]);
-                                } else {
-                                  handleInputChange(
-                                    "topicPreference",
-                                    current.filter((t) => t !== topic)
-                                  );
-                                }
-                              }}
-                              className="w-4 h-4 text-[#006398] border-gray-300 rounded focus:ring-[#006398]"
-                            />
-                            <span className="text-sm text-gray-700">
-                              {topic}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={submitForm}
-                      className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <Mail className="w-5 h-5" />
-                      Subscribe to Newsletter
                     </button>
                   </div>
                 </motion.div>

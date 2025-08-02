@@ -281,7 +281,7 @@ export default function SuccessStoriesPage() {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6">
                   Proven Results Across Industries and Scales
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+                <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
                   From startup acceleration to enterprise transformation, our
                   success stories demonstrate measurable impact through
                   innovative cloud and AI solutions. Discover how we've helped
@@ -688,8 +688,6 @@ export default function SuccessStoriesPage() {
                           {customer.name}
                         </h3>
                       </div>
-
-                      
                     </div>
                   </motion.div>
                 ))}
