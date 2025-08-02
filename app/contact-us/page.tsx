@@ -399,7 +399,7 @@ export default function ContactUsPage(): JSX.Element {
                   </Button>
                   {/* Apply for a job */}
                   <motion.a
-                    href="mailto:Hr@intel-cs.com"
+                    href="/form/job"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center mx-auto gap-3 p-4 w-full max-w-sm hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
@@ -417,7 +417,7 @@ export default function ContactUsPage(): JSX.Element {
                     </div>
                   </motion.a>
                   <motion.a
-                    href="/form"
+                    href="/form/consultation"
                     rel="noopener noreferrer"
                     className="flex items-center mx-auto gap-3 p-4 w-full max-w-sm hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
@@ -425,8 +425,10 @@ export default function ContactUsPage(): JSX.Element {
                   >
                     <Briefcase className="w-5 h-5 text-[#006398] flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-white">Apply</h3>
-                      <p className="text-sm text-gray-400">Join our team</p>
+                      <h3 className="font-semibold text-white">consultation</h3>
+                      <p className="text-sm text-gray-400">
+                        Request a Free Cloud Assessment
+                      </p>
                     </div>
                   </motion.a>
                 </form>
@@ -567,8 +569,8 @@ export default function ContactUsPage(): JSX.Element {
                   Comprehensive evaluation of your current infrastructure with
                   migration roadmap and cost analysis.
                 </p>
-                <Link 
-                  href={"/contact-us"} 
+                <Link
+                  href={"/contact-us"}
                   className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/30 hover:scale-105"
                 >
                   <Settings className="w-5 h-5 mr-2" />
@@ -589,8 +591,8 @@ export default function ContactUsPage(): JSX.Element {
                   Discover AI opportunities specific to your industry and
                   business processes.
                 </p>
-                <Link 
-                  href={"/contact-us"} 
+                <Link
+                  href={"/contact-us"}
                   className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#00A8E0]/30 hover:scale-105"
                 >
                   <MessageSquare className="w-5 h-5 mr-2" />
@@ -611,8 +613,8 @@ export default function ContactUsPage(): JSX.Element {
                   Collaborative session to design solutions aligned with your
                   business objectives.
                 </p>
-                <Link 
-                  href={"/contact-us"} 
+                <Link
+                  href={"/contact-us"}
                   className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/30 hover:scale-105"
                 >
                   <Users className="w-5 h-5 mr-2" />
@@ -639,16 +641,31 @@ export default function ContactUsPage(): JSX.Element {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                   {/* Primary Markets Card */}
-                  <motion.div 
+                  <motion.div
                     className="bg-gradient-to-br from-[#006398]/20 to-[#00A8E0]/10 backdrop-blur-sm hover:border-[#006398] transition-all duration-300 rounded-2xl p-6 lg:p-8 border border-gray-800 hover:shadow-xl hover:shadow-[#006398]/20"
                     variants={cardVariants}
                     transition={{ delay: 0.1 }}
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#006398]/20 rounded-full flex items-center justify-center mr-4">
-                        <svg className="w-6 h-6 text-[#00A8E0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <svg
+                          className="w-6 h-6 text-[#00A8E0]"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
                         </svg>
                       </div>
                       <h3 className="text-xl lg:text-2xl font-bold text-white">
@@ -661,15 +678,25 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.div>
 
                   {/* Expertise Delivery Card */}
-                  <motion.div 
+                  <motion.div
                     className="bg-gradient-to-br from-[#00A8E0]/20 to-[#006398]/10 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 lg:p-8 border border-gray-800 hover:shadow-xl hover:shadow-[#00A8E0]/20"
                     variants={cardVariants}
                     transition={{ delay: 0.2 }}
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#00A8E0]/20 rounded-full flex items-center justify-center mr-4">
-                        <svg className="w-6 h-6 text-[#006398]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
+                        <svg
+                          className="w-6 h-6 text-[#006398]"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"
+                          />
                         </svg>
                       </div>
                       <h3 className="text-xl lg:text-2xl font-bold text-white">
@@ -682,15 +709,25 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.div>
 
                   {/* Partnership Inquiries Card */}
-                  <motion.div 
+                  <motion.div
                     className="bg-gradient-to-br from-[#006398]/15 to-[#00A8E0]/15 backdrop-blur-sm rounded-2xl hover:border-[#006398] transition-all duration-300 p-6 lg:p-8 border border-gray-800 hover:shadow-xl hover:shadow-[#006398]/20 md:col-span-2 lg:col-span-1"
                     variants={cardVariants}
                     transition={{ delay: 0.3 }}
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#00A8E0]/20 rounded-full flex items-center justify-center mr-4">
-                        <svg className="w-6 h-6 text-[#00A8E0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        <svg
+                          className="w-6 h-6 text-[#00A8E0]"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
                         </svg>
                       </div>
                       <h3 className="text-xl lg:text-2xl font-bold text-white">
@@ -703,10 +740,23 @@ export default function ContactUsPage(): JSX.Element {
                       opportunities.
                     </p>
                     <div className="flex items-center">
-                      <svg className="w-5 h-5 text-[#00A8E0] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <svg
+                        className="w-5 h-5 text-[#00A8E0] mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
                       </svg>
-                      <a href="mailto:partnerships@intel-cs.com" className="text-[#00A8E0] hover:text-[#007bb8] transition-colors font-medium">
+                      <a
+                        href="mailto:partnerships@intel-cs.com"
+                        className="text-[#00A8E0] hover:text-[#007bb8] transition-colors font-medium"
+                      >
                         partnerships@intel-cs.com
                       </a>
                     </div>
