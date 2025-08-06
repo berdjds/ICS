@@ -475,7 +475,7 @@ export default function ContactUsPage(): JSX.Element {
                     <Phone className="w-6 h-6 text-[#006398] mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-gray-300">(+971) 4 835 8795</p>
+                      <p className="text-gray-300">+971 4 5774534</p>
                       <p className="text-sm text-gray-400 mt-1">
                         Available during business hours
                       </p>
@@ -483,7 +483,7 @@ export default function ContactUsPage(): JSX.Element {
                   </motion.a>
 
                   <motion.a
-                    href="https://wa.me/97145774534" // WhatsApp link without leading 0 and no special characters
+                    href="https://wa.me/971585821533" // WhatsApp link without leading 0 and no special characters
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
@@ -494,7 +494,7 @@ export default function ContactUsPage(): JSX.Element {
                     <div>
                       <h3 className="font-semibold mb-1">WhatsApp</h3>
                       <p className="text-gray-300 flex items-center gap-2">
-                        (+971) 4 577 4534
+                        +971 58 582 1533
                         <MessageSquare className="w-4 h-4 text-green-500" />{" "}
                         {/* WhatsApp icon */}
                       </p>
@@ -518,7 +518,9 @@ export default function ContactUsPage(): JSX.Element {
                       </p>
                     </div>
                   </motion.a>
-                  <motion.div
+                  <motion.a
+                    href="https://wa.me/971585821533"
+                    target="_blank"
                     className="flex items-start gap-4 p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/50 rounded-lg border border-gray-800 backdrop-blur-sm"
                     variants={cardVariants}
                     transition={{ delay: 0.5 }}
@@ -533,7 +535,7 @@ export default function ContactUsPage(): JSX.Element {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 </div>
               </motion.div>
             </div>

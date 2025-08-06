@@ -43,18 +43,10 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2">
-          <Link
-            href="https://intel-cs-support.atlassian.net/servicedesk/customer/user/login?destination=portals"
-            className="flex items-center"
-            target="_blank"
-          >
-            <Image
-              src="/support.png"
-              alt="Intel CS support"
-              width={60}
-              height={50}
-              className="mr-6"
-            />
+          <Link href="/">
+            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
+              Home
+            </Button>
           </Link>
           <Link href="/ai-solutions">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
@@ -103,6 +95,20 @@ export function Header() {
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
               Contact Us
             </Button>
+          </Link>
+          <Link
+            href="https://intel-cs-support.atlassian.net/servicedesk/customer/user/login?destination=portals"
+            target="_blank"
+            className="bg-[#006398] hover:bg-[#004d7a] text-white flex items-center rounded-full text-sm px-4 py-2"
+          >
+            {/* <Image
+              src="/support.png"
+              alt="Intel CS support"
+              width={60}
+              height={50}
+              className="mr-6"
+            /> */}
+            Customer Support Portal
           </Link>
         </nav>
 
