@@ -335,7 +335,7 @@ const ComprehensiveForms: React.FC = () => {
 
   // Form configuration
   const formTabs = [
-    { id: "consultation", label: "Free Consultation", icon: Calendar },
+    { id: "consultation", label: "Consultation", icon: Calendar },
     { id: "career", label: "Join Our Team", icon: Briefcase },
   ];
 
@@ -465,7 +465,7 @@ const ComprehensiveForms: React.FC = () => {
                   <div className="flex items-center gap-3 mb-8">
                     <Calendar className="w-6 h-6 text-[#006398]" />
                     <h3 className="text-2xl font-bold text-gray-900">
-                      Request a Free Cloud Assessment
+                      Request a Cloud Assessment
                     </h3>
                   </div>
 
@@ -629,7 +629,7 @@ const ComprehensiveForms: React.FC = () => {
                       className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
                     >
                       <Calendar className="w-5 h-5" />
-                      Request Free Assessment
+                      Request Assessment
                     </button>
                   </div>
                 </motion.div>

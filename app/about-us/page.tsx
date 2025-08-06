@@ -194,17 +194,13 @@ const AboutPage = () => {
                         </div>
                         <div className="text-gray-300">Market Focus</div>
                       </div>
-                      <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-700">
-                        <div className="text-4xl font-bold text-[#00A8E0] mb-2">
-                          20+
-                        </div>
-                        <div className="text-gray-300">Tech Partnerships</div>
+                    </div>
+                    <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border mt-2 border-gray-700">
+                      <div className="text-4xl text-center font-bold text-[#00A8E0] mb-2">
+                        20+
                       </div>
-                      <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-700">
-                        <div className="text-4xl font-bold text-[#00A8E0] mb-2">
-                          ISO
-                        </div>
-                        <div className="text-gray-300">Certified</div>
+                      <div className="text-gray-300 text-center">
+                        Tech Partnerships
                       </div>
                     </div>
                   </div>
@@ -262,11 +258,11 @@ const AboutPage = () => {
                   transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
                   className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300"
                 >
-                  <div className="text-4xl mb-6">{item.icon}</div>
+                  <div className="text-5xl mb-6">{item.icon}</div>
                   <h3 className="text-xl font-bold text-white mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-sm">
+                  <p className="text-gray-300 leading-relaxed text-lg">
                     {item.description}
                   </p>
                 </motion.div>
@@ -329,11 +325,11 @@ const AboutPage = () => {
                   transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
                   className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300"
                 >
-                  <div className="text-4xl mb-6">{value.icon}</div>
+                  <div className="text-5xl mb-6">{value.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-lg">
                     {value.description}
                   </p>
                 </motion.div>
@@ -362,7 +358,6 @@ const AboutPage = () => {
                     "Microsoft Azure Partner",
                     "Google Cloud Partner",
                     "20+ Technology Partnerships",
-                    "ISO Certified Processes",
                   ].map((cert, index) => (
                     <div key={index} className="flex items-center space-x-4">
                       <div className="bg-gradient-to-r from-[#006398] to-[#00A8E0] w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">

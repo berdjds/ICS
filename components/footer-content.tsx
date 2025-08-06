@@ -92,14 +92,12 @@ export function FooterContent() {
               <h4 className="font-semibold text-white mb-1 text-sm md:text-base">
                 Phone
               </h4>
-              <p className="text-gray-300 text-xs md:text-sm">
-                (+971) 4 835 8795
-              </p>
+              <p className="text-gray-300 text-xs md:text-sm">+971 4 5774534</p>
             </div>
           </motion.div>
 
           <motion.a
-            href="/contact-us"
+            href="mailto:info@intel-cs.com"
             className="flex cursor-pointer flex-col items-center gap-2 md:gap-3 p-3 md:p-4 hover:border-[#006398] transition-all duration-300 bg-gray-900/30 rounded-lg border border-gray-800 backdrop-blur-sm"
             variants={itemVariants}
             transition={{ delay: 0.3 }}
@@ -118,7 +116,10 @@ export function FooterContent() {
       </motion.div>
 
       <motion.div variants={itemVariants} className="flex gap-4 md:gap-6">
-        <Link href="https://www.instagram.com/intelligencecloudsphere/" target="_blank">
+        <Link
+          href="https://www.instagram.com/intelligencecloudsphere/"
+          target="_blank"
+        >
           <Instagram className="w-5 h-5 md:w-6 md:h-6 hover:text-[#006398] transition-colors cursor-pointer" />
         </Link>
         <Link href="https://www.linkedin.com/company/intel-cs" target="_blank">

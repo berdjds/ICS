@@ -1,16 +1,19 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 interface WhatsAppFloatProps {
   phoneNumber?: string;
   message?: string;
 }
 
-export default function WhatsAppFloat({ 
+export default function WhatsAppFloat({
   phoneNumber = "+971585821533", // Default to your company number
-  message = "Hello! I'm interested in your services." 
+  message = "Hello! I'm interested in your services.",
 }: WhatsAppFloatProps) {
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${phoneNumber.replace(
+    /[^0-9]/g,
+    ""
+  )}?text=${encodeURIComponent(message)}`;
 
   return (
     <Link
@@ -23,16 +26,16 @@ export default function WhatsAppFloat({
       <div className="relative">
         {/* WhatsApp Logo */}
         <Image
-          src="/whatsApp.png"
+          src="/wp2.png"
           alt="WhatsApp"
-          width={60}
-          height={60}
+          width={80}
+          height={80}
           className="shadow-lg hover:shadow-xl transition-shadow duration-300 object-contain"
         />
-        
+
         {/* Pulse animation ring */}
         <div className="absolute -inset-3 rounded-full bg-green-500 opacity-20 animate-ping group-hover:animate-none"></div>
-        
+
         {/* Tooltip */}
         <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
           Chat with us on WhatsApp
