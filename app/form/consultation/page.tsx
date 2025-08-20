@@ -38,14 +38,6 @@ interface FormData {
   timeline: string;
   budget: string;
 
-  // Career Form
-  fullName: string;
-  contactInfo: string;
-  position: string;
-  cv: File | null;
-  coverMessage: string;
-  dataConsent: boolean;
-
   // Newsletter
   newsletterEmail: string;
   industryPreference: string;
@@ -69,7 +61,6 @@ const cardVariants = {
 };
 
 const ComprehensiveForms: React.FC = () => {
-  const [activeForm, setActiveForm] = useState<string>("consultation");
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>("");
@@ -91,14 +82,6 @@ const ComprehensiveForms: React.FC = () => {
     painPoints: "",
     timeline: "",
     budget: "",
-
-    // Career Form
-    fullName: "",
-    contactInfo: "",
-    position: "",
-    cv: null,
-    coverMessage: "",
-    dataConsent: false,
 
     // Newsletter
     newsletterEmail: "",
@@ -125,44 +108,7 @@ const ComprehensiveForms: React.FC = () => {
     }
   };
 
-  // File upload handler
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Validate file size (5MB limit)
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          cv: "File size must be less than 5MB",
-        }));
-        return;
-      }
 
-      // Validate file type
-      const allowedTypes = [".pdf", ".doc", ".docx"];
-      const fileExtension = "." + file.name.split(".").pop()?.toLowerCase();
-      if (!allowedTypes.includes(fileExtension)) {
-        setErrors((prev) => ({
-          ...prev,
-          cv: "Please upload a PDF, DOC, or DOCX file",
-        }));
-        return;
-      }
-
-      setFormData((prev) => ({
-        ...prev,
-        cv: file,
-      }));
-
-      // Clear any existing error
-      if (errors.cv) {
-        setErrors((prev) => ({
-          ...prev,
-          cv: "",
-        }));
-      }
-    }
-  };
 
   // Validation functions
   const validateContactForm = (): ValidationErrors => {
@@ -210,32 +156,7 @@ const ComprehensiveForms: React.FC = () => {
     return newErrors;
   };
 
-  const validateCareerForm = (): ValidationErrors => {
-    const newErrors: ValidationErrors = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
-    }
-
-    if (!formData.contactInfo.trim()) {
-      newErrors.contactInfo = "Contact information is required";
-    }
-
-    if (!formData.position.trim()) {
-      newErrors.position = "Position applied for is required";
-    }
-
-    if (!formData.cv) {
-      newErrors.cv = "Please upload your CV/Resume";
-    }
-
-    if (!formData.dataConsent) {
-      newErrors.dataConsent =
-        "You must consent to data processing to submit your application";
-    }
-
-    return newErrors;
-  };
 
   const validateNewsletterForm = (): ValidationErrors => {
     const newErrors: ValidationErrors = {};
@@ -275,70 +196,43 @@ const ComprehensiveForms: React.FC = () => {
 
   // Form submission handler
   const submitForm = () => {
-    let validation: ValidationErrors = {};
-    let formType = "";
+    const validationErrors = validateConsultationForm();
 
-    switch (activeForm) {
-      case "contact":
-        validation = validateContactForm();
-        formType = "contact";
-        break;
-      case "consultation":
-        validation = validateConsultationForm();
-        formType = "consultation";
-        break;
-      case "career":
-        validation = validateCareerForm();
-        formType = "career";
-        break;
-      case "newsletter":
-        validation = validateNewsletterForm();
-        formType = "newsletter";
-        break;
-      default:
-        return;
-    }
-
-    setErrors(validation);
-
-    if (Object.keys(validation).length > 0) {
-      showValidationAlert(Object.keys(validation).length);
-      // Scroll to first error
-      const firstError = Object.keys(validation)[0];
-      const element =
-        (document.querySelector(`[name="${firstError}"]`) as HTMLElement) ||
-        (document.querySelector(`#${firstError}`) as HTMLElement);
-      if (element) {
-        element.focus();
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      showValidationAlert(Object.keys(validationErrors).length);
       return;
     }
 
-    // Handle successful form submission
-    console.log("Form submitted:", formData);
-    showSuccessAlert(formType);
+    // Clear errors and show success
+    setErrors({});
+    setIsSubmitted(true);
+    showSuccessAlert("consultation");
 
-    // Reset form data for the current form
-    if (activeForm === "contact") {
-      setFormData((prev) => ({
-        ...prev,
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
         name: "",
         email: "",
         company: "",
         phone: "",
         message: "",
         inquiryType: "",
-      }));
-    }
+        consultationName: "",
+        consultationEmail: "",
+        currentInfrastructure: "",
+        painPoints: "",
+        timeline: "",
+        budget: "",
+        newsletterEmail: "",
+        industryPreference: "",
+        topicPreference: [],
+      });
+    }, 3000);
   };
 
   // Form configuration
-  const formTabs = [
-    { id: "consultation", label: "Consultation", icon: Calendar },
-    { id: "career", label: "Join Our Team", icon: Briefcase },
-  ];
-
   const inquiryTypes = ["Support", "Sales", "Partnership", "Careers"];
   const budgetRanges = ["Under $10K", "$10K - $50K", "$50K - $100K", "$100K+"];
   const timelineOptions = ["ASAP", "1-3 months", "3-6 months", "6+ months"];
@@ -388,11 +282,10 @@ const ComprehensiveForms: React.FC = () => {
             variants={cardVariants}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Get Started with <span className="text-[#006398]">iNTEL-CS</span>
+              Request a Cloud <span className="text-[#006398]">Assessment</span>
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Choose the right form for your needs and let us help you achieve
-              your goals
+              Get expert consultation on your cloud infrastructure needs and challenges
             </p>
           </motion.div>
 
@@ -421,47 +314,18 @@ const ComprehensiveForms: React.FC = () => {
             )}
           </AnimatePresence>
 
-          {/* Form Tabs */}
-          <motion.div
-            className="flex flex-wrap justify-center mb-8 bg-white rounded-xl p-2 shadow-sm"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {formTabs.map((tab) => {
-              const IconComponent = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveForm(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 m-1  ${
-                    activeForm === tab.id
-                      ? "bg-[#006398] text-white shadow-md"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <IconComponent className="w-4 h-4" />
-                  <span className="font-medium text-sm md:text-base">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </motion.div>
 
-          {/* Forms Container */}
+
+          {/* Consultation Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <AnimatePresence mode="wait">
-              {/* Consultation Form */}
-              {activeForm === "consultation" && (
-                <motion.div
-                  key="consultation"
-                  variants={sectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
+              <motion.div
+                key="consultation"
+                variants={sectionVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
                   <div className="flex items-center gap-3 mb-8">
                     <Calendar className="w-6 h-6 text-[#006398]" />
                     <h3 className="text-2xl font-bold text-gray-900">
@@ -632,215 +496,7 @@ const ComprehensiveForms: React.FC = () => {
                       Request Assessment
                     </button>
                   </div>
-                </motion.div>
-              )}
-
-              {/* Career Application Form */}
-              {activeForm === "career" && (
-                <motion.div
-                  key="career"
-                  variants={sectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  <div className="flex items-center gap-3 mb-8">
-                    <Briefcase className="w-6 h-6 text-[#006398]" />
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Join Our Team
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="fullName"
-                          value={formData.fullName}
-                          onChange={(e) =>
-                            handleInputChange("fullName", e.target.value)
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.fullName
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="Enter your full name"
-                        />
-                        {errors.fullName && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.fullName}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Email *
-                        </label>
-                        <input
-                          type="text"
-                          name="contactInfo"
-                          value={formData.contactInfo}
-                          onChange={(e) =>
-                            handleInputChange("contactInfo", e.target.value)
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.contactInfo
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="Enter your Email"
-                        />
-                        {errors.contactInfo && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.contactInfo}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Position Applied For *
-                      </label>
-                      <input
-                        type="text"
-                        name="position"
-                        value={formData.position}
-                        onChange={(e) =>
-                          handleInputChange("position", e.target.value)
-                        }
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                          errors.position
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                        placeholder="e.g., Cloud Solutions Architect"
-                      />
-                      {errors.position && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.position}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        <Upload className="w-4 h-4 inline mr-2" />
-                        Upload CV/Resume *
-                      </label>
-                      <div
-                        className={`border-2 border-dashed rounded-lg p-6 text-center hover:border-[#006398] transition-colors ${
-                          errors.cv
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                      >
-                        <input
-                          type="file"
-                          accept=".pdf,.doc,.docx"
-                          onChange={handleFileUpload}
-                          className="hidden"
-                          id="cv-upload"
-                        />
-                        <label htmlFor="cv-upload" className="cursor-pointer">
-                          <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                          <p className="text-gray-600">
-                            {formData.cv
-                              ? formData.cv.name
-                              : "Click to upload your CV"}
-                          </p>
-                          <p className="text-sm text-gray-400 mt-2">
-                            PDF, DOC, DOCX (Max 5MB)
-                          </p>
-                        </label>
-                      </div>
-                      {errors.cv && (
-                        <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                          <svg
-                            className="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {errors.cv}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Cover Message
-                      </label>
-                      <textarea
-                        rows={4}
-                        value={formData.coverMessage}
-                        onChange={(e) =>
-                          handleInputChange("coverMessage", e.target.value)
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all resize-none"
-                        placeholder="Brief introduction about yourself and why you're interested in this position..."
-                      />
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <input
-                        type="checkbox"
-                        id="consent"
-                        checked={formData.dataConsent}
-                        onChange={(e) =>
-                          handleInputChange("dataConsent", e.target.checked)
-                        }
-                        className="mt-1 w-4 h-4 text-[#006398] border-gray-300 rounded focus:ring-[#006398]"
-                      />
-                      <label
-                        htmlFor="consent"
-                        className="text-sm text-gray-600"
-                      >
-                        I consent to storing my data for recruitment purposes
-                        and understand it will be processed according to the
-                        privacy policy. *
-                      </label>
-                    </div>
-                    {errors.dataConsent && (
-                      <p className="text-sm text-red-600 flex items-center gap-1">
-                        <svg
-                          className="w-4 h-4"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {errors.dataConsent}
-                      </p>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={submitForm}
-                      disabled={!formData.dataConsent}
-                      className="w-full bg-[#006398] hover:bg-[#004d7a] disabled:bg-gray-300 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <Briefcase className="w-5 h-5" />
-                      Submit Application
-                    </button>
-                  </div>
-                </motion.div>
-              )}
+              </motion.div>
             </AnimatePresence>
           </div>
 

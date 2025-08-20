@@ -32,7 +32,7 @@ export function HeroSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <h1 className="text-1xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-tight mb-4 md:mb-6">
+          <h1 className="text-xl sm:text-2xl md:text-2xl lg:text-7xl font-bold leading-tight mb-4 md:mb-6">
             Advanced Cloud & AI Solutions
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed">

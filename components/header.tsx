@@ -29,7 +29,7 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 p-1 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 p-1 md:p-4 lg:p-5 bg-black/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image
@@ -46,6 +46,11 @@ export function Header() {
           <Link href="/">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
               Home
+            </Button>
+          </Link>
+          <Link href="/about-us">
+            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
+              About Us
             </Button>
           </Link>
           <Link href="/ai-solutions">
@@ -86,11 +91,7 @@ export function Header() {
               Success Stories
             </Button>
           </Link>
-          <Link href="/about-us">
-            <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
-              About Us
-            </Button>
-          </Link>
+          
           <Link href="/contact-us">
             <Button className="bg-[#006398] hover:bg-[#004d7a] text-white rounded-full text-sm px-4 py-2">
               Contact Us

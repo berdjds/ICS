@@ -22,22 +22,6 @@ import { Header } from "@/components/header";
 
 // TypeScript interfaces
 interface FormData {
-  // Contact Form
-  name: string;
-  email: string;
-  company: string;
-  phone: string;
-  message: string;
-  inquiryType: string;
-
-  // Consultation Form
-  consultationName: string;
-  consultationEmail: string;
-  currentInfrastructure: string;
-  painPoints: string;
-  timeline: string;
-  budget: string;
-
   // Career Form
   fullName: string;
   contactInfo: string;
@@ -45,11 +29,6 @@ interface FormData {
   cv: File | null;
   coverMessage: string;
   dataConsent: boolean;
-
-  // Newsletter
-  newsletterEmail: string;
-  industryPreference: string;
-  topicPreference: string[];
 }
 
 interface ValidationErrors {
@@ -69,29 +48,12 @@ const cardVariants = {
 };
 
 const ComprehensiveForms: React.FC = () => {
-  const [activeForm, setActiveForm] = useState<string>("career");
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<FormData>({
-    // Contact Form
-    name: "",
-    email: "",
-    company: "",
-    phone: "",
-    message: "",
-    inquiryType: "",
-
-    // Consultation Form
-    consultationName: "",
-    consultationEmail: "",
-    currentInfrastructure: "",
-    painPoints: "",
-    timeline: "",
-    budget: "",
-
     // Career Form
     fullName: "",
     contactInfo: "",
@@ -99,11 +61,6 @@ const ComprehensiveForms: React.FC = () => {
     cv: null,
     coverMessage: "",
     dataConsent: false,
-
-    // Newsletter
-    newsletterEmail: "",
-    industryPreference: "",
-    topicPreference: [],
   });
 
   // Input change handler
@@ -165,50 +122,6 @@ const ComprehensiveForms: React.FC = () => {
   };
 
   // Validation functions
-  const validateContactForm = (): ValidationErrors => {
-    const newErrors: ValidationErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Full name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email address is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    return newErrors;
-  };
-
-  const validateConsultationForm = (): ValidationErrors => {
-    const newErrors: ValidationErrors = {};
-
-    if (!formData.consultationName.trim()) {
-      newErrors.consultationName = "Full name is required";
-    }
-
-    if (!formData.consultationEmail.trim()) {
-      newErrors.consultationEmail = "Email address is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.consultationEmail)) {
-      newErrors.consultationEmail = "Please enter a valid email address";
-    }
-
-    if (!formData.currentInfrastructure.trim()) {
-      newErrors.currentInfrastructure =
-        "Current infrastructure description is required";
-    }
-
-    if (!formData.painPoints.trim()) {
-      newErrors.painPoints = "Please describe your pain points and challenges";
-    }
-
-    return newErrors;
-  };
 
   const validateCareerForm = (): ValidationErrors => {
     const newErrors: ValidationErrors = {};
@@ -237,17 +150,7 @@ const ComprehensiveForms: React.FC = () => {
     return newErrors;
   };
 
-  const validateNewsletterForm = (): ValidationErrors => {
-    const newErrors: ValidationErrors = {};
 
-    if (!formData.newsletterEmail.trim()) {
-      newErrors.newsletterEmail = "Email address is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.newsletterEmail)) {
-      newErrors.newsletterEmail = "Please enter a valid email address";
-    }
-
-    return newErrors;
-  };
 
   // Alert functions
   const showValidationAlert = (errorCount: number) => {
@@ -275,87 +178,32 @@ const ComprehensiveForms: React.FC = () => {
 
   // Form submission handler
   const submitForm = () => {
-    let validation: ValidationErrors = {};
-    let formType = "";
+    const validationErrors = validateCareerForm();
 
-    switch (activeForm) {
-      case "contact":
-        validation = validateContactForm();
-        formType = "contact";
-        break;
-      case "consultation":
-        validation = validateConsultationForm();
-        formType = "consultation";
-        break;
-      case "career":
-        validation = validateCareerForm();
-        formType = "career";
-        break;
-      case "newsletter":
-        validation = validateNewsletterForm();
-        formType = "newsletter";
-        break;
-      default:
-        return;
-    }
-
-    setErrors(validation);
-
-    if (Object.keys(validation).length > 0) {
-      showValidationAlert(Object.keys(validation).length);
-      // Scroll to first error
-      const firstError = Object.keys(validation)[0];
-      const element =
-        (document.querySelector(`[name="${firstError}"]`) as HTMLElement) ||
-        (document.querySelector(`#${firstError}`) as HTMLElement);
-      if (element) {
-        element.focus();
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      showValidationAlert(Object.keys(validationErrors).length);
       return;
     }
 
-    // Handle successful form submission
-    console.log("Form submitted:", formData);
-    showSuccessAlert(formType);
+    // Clear errors and show success
+    setErrors({});
+    setIsSubmitted(true);
+    showSuccessAlert("career");
 
-    // Reset form data for the current form
-    if (activeForm === "contact") {
-      setFormData((prev) => ({
-        ...prev,
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        message: "",
-        inquiryType: "",
-      }));
-    }
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        fullName: "",
+        contactInfo: "",
+        position: "",
+        cv: null,
+        coverMessage: "",
+        dataConsent: false,
+      });
+    }, 3000);
   };
-
-  // Form configuration
-  const formTabs = [
-    { id: "consultation", label: "Consultation", icon: Calendar },
-    { id: "career", label: "Join Our Team", icon: Briefcase },
-  ];
-
-  const inquiryTypes = ["Support", "Sales", "Partnership", "Careers"];
-  const budgetRanges = ["Under $10K", "$10K - $50K", "$50K - $100K", "$100K+"];
-  const timelineOptions = ["ASAP", "1-3 months", "3-6 months", "6+ months"];
-  const industries = [
-    "Financial Services",
-    "Healthcare",
-    "E-commerce",
-    "Manufacturing",
-    "Government",
-    "Education",
-  ];
-  const topics = [
-    "Cloud Solutions",
-    "AI & Data",
-    "Cybersecurity",
-    "Digital Transformation",
-  ];
 
   return (
     <>
@@ -388,11 +236,10 @@ const ComprehensiveForms: React.FC = () => {
             variants={cardVariants}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Get Started with <span className="text-[#006398]">iNTEL-CS</span>
+              Join Our <span className="text-[#006398]">Team</span>
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Choose the right form for your needs and let us help you achieve
-              your goals
+              Ready to make an impact? Apply to join our innovative team at iNTEL-CS
             </p>
           </motion.div>
 
@@ -421,223 +268,12 @@ const ComprehensiveForms: React.FC = () => {
             )}
           </AnimatePresence>
 
-          {/* Form Tabs */}
-          <motion.div
-            className="flex flex-wrap justify-center mb-8 bg-white rounded-xl p-2 shadow-sm"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {formTabs.map((tab) => {
-              const IconComponent = tab.icon;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveForm(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 m-1  ${
-                    activeForm === tab.id
-                      ? "bg-[#006398] text-white shadow-md"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <IconComponent className="w-4 h-4" />
-                  <span className="font-medium text-sm md:text-base">
-                    {tab.label}
-                  </span>
-                </button>
-              );
-            })}
-          </motion.div>
 
-          {/* Forms Container */}
+
+          {/* Career Application Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <AnimatePresence mode="wait">
-              {/* Consultation Form */}
-              {activeForm === "consultation" && (
-                <motion.div
-                  key="consultation"
-                  variants={sectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  <div className="flex items-center gap-3 mb-8">
-                    <Calendar className="w-6 h-6 text-[#006398]" />
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      Request a Cloud Assessment
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="consultationName"
-                          value={formData.consultationName}
-                          onChange={(e) =>
-                            handleInputChange(
-                              "consultationName",
-                              e.target.value
-                            )
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.consultationName
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="Enter your full name"
-                        />
-                        {errors.consultationName && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.consultationName}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          name="consultationEmail"
-                          value={formData.consultationEmail}
-                          onChange={(e) =>
-                            handleInputChange(
-                              "consultationEmail",
-                              e.target.value
-                            )
-                          }
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all ${
-                            errors.consultationEmail
-                              ? "border-red-500 bg-red-50"
-                              : "border-gray-300"
-                          }`}
-                          placeholder="your.email@company.com"
-                        />
-                        {errors.consultationEmail && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.consultationEmail}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Current Infrastructure *
-                      </label>
-                      <textarea
-                        name="currentInfrastructure"
-                        rows={3}
-                        value={formData.currentInfrastructure}
-                        onChange={(e) =>
-                          handleInputChange(
-                            "currentInfrastructure",
-                            e.target.value
-                          )
-                        }
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all resize-none ${
-                          errors.currentInfrastructure
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                        placeholder="Describe your current IT infrastructure..."
-                      />
-                      {errors.currentInfrastructure && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.currentInfrastructure}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Pain Points & Challenges *
-                      </label>
-                      <textarea
-                        name="painPoints"
-                        rows={3}
-                        value={formData.painPoints}
-                        onChange={(e) =>
-                          handleInputChange("painPoints", e.target.value)
-                        }
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all resize-none ${
-                          errors.painPoints
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-300"
-                        }`}
-                        placeholder="What challenges are you facing with your current setup?"
-                      />
-                      {errors.painPoints && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.painPoints}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Timeline
-                        </label>
-                        <select
-                          value={formData.timeline}
-                          onChange={(e) =>
-                            handleInputChange("timeline", e.target.value)
-                          }
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                        >
-                          <option value="">Select timeline</option>
-                          {timelineOptions.map((option) => (
-                            <option key={option} value={option}>
-                              {option}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Budget Range
-                        </label>
-                        <select
-                          value={formData.budget}
-                          onChange={(e) =>
-                            handleInputChange("budget", e.target.value)
-                          }
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#006398] focus:border-transparent transition-all"
-                        >
-                          <option value="">Select budget range</option>
-                          {budgetRanges.map((range) => (
-                            <option key={range} value={range}>
-                              {range}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={submitForm}
-                      className="w-full bg-[#006398] hover:bg-[#004d7a] text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <Calendar className="w-5 h-5" />
-                      Request Assessment
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Career Application Form */}
-              {activeForm === "career" && (
-                <motion.div
+              <motion.div
                   key="career"
                   variants={sectionVariants}
                   initial="hidden"
@@ -840,7 +476,6 @@ const ComprehensiveForms: React.FC = () => {
                     </button>
                   </div>
                 </motion.div>
-              )}
             </AnimatePresence>
           </div>
 

@@ -543,88 +543,69 @@ export default function ContactUsPage(): JSX.Element {
         </section>
         {/* Get Started Options Section */}
         <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-gray-900/30 backdrop-blur-sm">
-          <div className="container mx-auto max-w-6xl">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={sectionVariants}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Get Started <span className="text-[#00A8E0]">Options</span>
-              </h2>
-            </motion.div>
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={sectionVariants}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+        Get Started <span className="text-[#00A8E0]">Options</span>
+      </h2>
+    </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div
-                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
-                variants={cardVariants}
-                transition={{ delay: 0.1 }}
-              >
-                <Settings className="w-12 h-12 text-[#006398] mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Free Cloud Assessment
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
-                  Comprehensive evaluation of your current infrastructure with
-                  migration roadmap and cost analysis.
-                </p>
-                <Link
-                  href={"/contact-us"}
-                  className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/30 hover:scale-105"
-                >
-                  <Settings className="w-5 h-5 mr-2" />
-                  Schedule Assessment
-                </Link>
-              </motion.div>
+    {/* Centered grid with justify-center */}
+    <div className="flex justify-center">
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+        <motion.div
+          className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
+          variants={cardVariants}
+          transition={{ delay: 0.1 }}
+        >
+          <Settings className="w-12 h-12 text-[#006398] mb-6" />
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Free Cloud Assessment
+          </h3>
+          <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+            Comprehensive evaluation of your current infrastructure with
+            migration roadmap and cost analysis.
+          </p>
+          <Link
+            href={"/form/consultation"}
+            className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/30 hover:scale-105"
+          >
+            <Settings className="w-5 h-5 mr-2" />
+            Schedule Assessment
+          </Link>
+        </motion.div>
 
-              <motion.div
-                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
-                variants={cardVariants}
-                transition={{ delay: 0.2 }}
-              >
-                <MessageSquare className="w-12 h-12 text-[#006398] mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  AI Readiness Consultation
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
-                  Discover AI opportunities specific to your industry and
-                  business processes.
-                </p>
-                <Link
-                  href={"/contact-us"}
-                  className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#00A8E0]/30 hover:scale-105"
-                >
-                  <MessageSquare className="w-5 h-5 mr-2" />
-                  Book AI Consultation
-                </Link>
-              </motion.div>
-
-              <motion.div
-                className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
-                variants={cardVariants}
-                transition={{ delay: 0.3 }}
-              >
-                <Users className="w-12 h-12 text-[#006398] mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Custom Solution Workshop
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
-                  Collaborative session to design solutions aligned with your
-                  business objectives.
-                </p>
-                <Link
-                  href={"/contact-us"}
-                  className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/30 hover:scale-105"
-                >
-                  <Users className="w-5 h-5 mr-2" />
-                  Request Workshop
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <motion.div
+          className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300 flex flex-col h-full"
+          variants={cardVariants}
+          transition={{ delay: 0.2 }}
+        >
+          <MessageSquare className="w-12 h-12 text-[#006398] mb-6" />
+          <h3 className="text-2xl font-bold text-white mb-4">
+            AI Readiness Consultation
+          </h3>
+          <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
+            Discover AI opportunities specific to your industry and
+            business processes.
+          </p>
+          <Link
+            href={"/form/consultationRequest"}
+            className="flex items-center justify-center w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#007bb8] text-white mt-auto py-3 px-6 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#00A8E0]/30 hover:scale-105"
+          >
+            <MessageSquare className="w-5 h-5 mr-2" />
+            Book AI Consultation
+          </Link>
+        </motion.div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Service Areas Section */}
         <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">

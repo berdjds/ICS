@@ -14,6 +14,7 @@ import { getAISkullLogoPoints } from "./scene/logo-generators/ai-skull-logo";
 import { getEarthLogoPoints } from "./scene/logo-generators/earth-logo";
 import { getCloudMigrationLogoPoints } from "./scene/logo-generators/cloud-migration-logo";
 import { getServerLogoPoints } from "./scene/logo-generators/server-logo";
+import { getHandsLogoPoints } from "./scene/logo-generators/hands";
 
 export function Scene() {
   const scroll = useScroll();
@@ -47,7 +48,7 @@ export function Scene() {
     const cloudMigrationPoints = getCloudMigrationLogoPoints(PARTICLE_COUNT);
 
     // --- 4. Server Infrastructure Logo ---
-    const serverLogoPoints = getServerLogoPoints(PARTICLE_COUNT);
+    const serverLogoPoints = getHandsLogoPoints(PARTICLE_COUNT);
 
     // --- 5. Section 5 - Empty (no particles) ---
     const section5Points = Array(PARTICLE_COUNT)

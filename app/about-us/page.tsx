@@ -33,25 +33,34 @@ const AboutPage = () => {
       subtitle: "& Managing Director",
       image: "/team/MD.jpg",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/mohammeddarras/",
       },
     },
     {
-      name: "Ameen Abodabash",
-      title: "Chief Technology Officer",
+      name: "Mohamed Fawzy",
+      title: "Sales Manager",
       subtitle: "",
-      image: "/team/AA.jpg",
+      image: "/team/fawzy_Photo.jpg",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/mohamed-fawzy-72318a19/",
       },
     },
     {
-      name: "Mohammad Mohiealdeen",
-      title: "Cloud Operational Officer",
+      name: "Mohamed Soliman",
+      title: "Technical Delivery Manager",
       subtitle: "",
-      image: "/team/mohammad-mohiealdeen.jpg",
+      image: "/team/Soliman_Photo.jpg",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/mohamed-soliman-04981061/",
+      },
+    },
+    {
+      name: "Hussam Aljoumat",
+      title: "Cloud Operations Manager",
+      subtitle: "",
+      image: "/team/Hussam_Photo.png",
+      social: {
+        linkedin: "https://www.linkedin.com/in/mhd-hossam-aljoumat/",
       },
     },
   ];
@@ -132,7 +141,7 @@ const AboutPage = () => {
                     deliver solutions that address real business challenges.
                   </p>
 
-                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border hover:border-[#006398] transition-all duration-300 border-gray-800 mt-8">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-4 border hover:border-[#006398] transition-all duration-300 border-gray-800 mt-8">
                     <h3 className="text-xl font-bold text-[#00A8E0] mb-4">
                       Our Mission
                     </h3>
@@ -166,17 +175,19 @@ const AboutPage = () => {
                 <div className="relative h-96 bg-gradient-to-br from-[#006398]/20 to-[#00A8E0]/20 rounded-3xl border border-gray-800 overflow-hidden">
                   {/* Simulated particle background */}
                   <div className="absolute inset-0 opacity-30">
-                    {[...Array(50)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-[#00A8E0] rounded-full animate-pulse"
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 2}s`,
-                        }}
-                      />
-                    ))}
+                    {[...Array(50)].map((_, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 bg-[#00A8E0] rounded-full animate-pulse"
+                          style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 2}s`,
+                          }}
+                        ></div>
+                      );
+                    })}
                   </div>
 
                   {/* Content overlay */}
@@ -210,8 +221,107 @@ const AboutPage = () => {
           </div>
         </section>
 
+        {/* Our Team Section - MOVED HERE after Our Story */}
+        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-black/80 backdrop-blur-sm">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              className="text-center mb-12 md:mb-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={sectionVariants}
+            >
+              <p className="text-[#006398] font-bold mb-10 tracking-wide text-2xl">
+                Our Team
+              </p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-6 mb-6">
+                We Have A Dynamic And Genius Team To{" "}
+                <span className="text-[#006398]">Serve You.</span>
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={sectionVariants}
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  className="text-center group flex flex-col h-full"
+                  variants={cardVariants}
+                  transition={{ delay: index * 0.2 }}
+                >
+                  {/* Profile Image */}
+                  <div className="relative mb-6 inline-block">
+                    <div className="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <img
+                        src={member.image}
+                        alt={`${member.name} profile`}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                        onError={(
+                          e: React.SyntheticEvent<HTMLImageElement, Event>
+                        ) => {
+                          const target = e.currentTarget;
+                          const nextSibling =
+                            target.nextElementSibling as HTMLElement | null;
+
+                          target.style.display = "none";
+                          if (nextSibling) {
+                            nextSibling.style.display = "flex";
+                          }
+                        }}
+                      />
+                      {/* Fallback placeholder */}
+                      <div className="w-full h-full bg-gray-200 items-center justify-center text-gray-500 font-semibold text-lg" style={{ display: 'none' }}>
+                        {member.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </div>
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* Name and Title */}
+                  <div className="mb-4 flex flex-col justify-between flex-grow">
+                    <div className="flex-grow flex flex-col justify-center">
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#006398] transition-colors duration-300 text-center">
+                        {member.name}
+                      </h3>
+                      <p className="text-gray-400 font-medium leading-tight text-center">
+                        {member.title}
+                      </p>
+                      {member.subtitle && (
+                        <p className="text-gray-400 font-medium leading-tight text-center">
+                          {member.subtitle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Social Media Icons */}
+                  <div className="flex justify-center space-x-4 mt-auto">
+                    <a
+                      href={member.social.linkedin}
+                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      aria-label={`${member.name} LinkedIn`}
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* What Sets Us Apart Section */}
-        <section className="py-20 bg-black/80 backdrop-blur-sm">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -272,7 +382,7 @@ const AboutPage = () => {
         </section>
 
         {/* Our Values Section */}
-        <section className="py-20">
+        <section className="py-20 bg-black/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -323,13 +433,13 @@ const AboutPage = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                  className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300"
+                  className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 hover:border-[#00A8E0]/50 transition-all duration-300"
                 >
                   <div className="text-5xl mb-6">{value.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-lg">
+                  <p className="text-gray-300 leading-relaxed text-lg text-balance">
                     {value.description}
                   </p>
                 </motion.div>
@@ -339,7 +449,7 @@ const AboutPage = () => {
         </section>
 
         {/* Certifications & Partnerships Section */}
-        <section className="py-20 bg-black/80 backdrop-blur-sm">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <motion.div
@@ -417,106 +527,8 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
-          <div className="container mx-auto max-w-6xl">
-            <motion.div
-              className="text-center mb-12 md:mb-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={sectionVariants}
-            >
-              <p className="text-[#006398] font-bold mb-10 tracking-wide text-2xl">
-                Our Team
-              </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white  md:mb-6 mb-6">
-                We Have A Dynamic And Genius Team To{" "}
-                <span className="text-[#006398]">Serve You.</span>
-              </h2>
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={sectionVariants}
-            >
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  className="text-center group flex flex-col h-full"
-                  variants={cardVariants}
-                  transition={{ delay: index * 0.2 }}
-                >
-                  {/* Profile Image */}
-                  <div className="relative mb-6 inline-block">
-                    <div className="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                      <img
-                        src={member.image}
-                        alt={`${member.name} profile`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        onError={(
-                          e: React.SyntheticEvent<HTMLImageElement, Event>
-                        ) => {
-                          const target = e.currentTarget;
-                          const nextSibling =
-                            target.nextElementSibling as HTMLElement | null;
-
-                          target.style.display = "none";
-                          if (nextSibling) {
-                            nextSibling.style.display = "flex";
-                          }
-                        }}
-                      />
-                      {/* Fallback placeholder */}
-                      <div className="w-full h-full bg-gray-200  items-center justify-center text-gray-500 font-semibold text-lg ">
-                        {member.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </div>
-                    </div>
-
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 rounded-full  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-
-                  {/* Name and Title */}
-                  <div className="mb-4 flex flex-col justify-between flex-grow">
-                    <div className="flex-grow flex flex-col justify-center">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-[#006398] transition-colors duration-300 text-center">
-                        {member.name}
-                      </h3>
-                      <p className="text-gray-400 font-medium leading-tight text-center">
-                        {member.title}
-                      </p>
-                      {member.subtitle && (
-                        <p className="text-gray-400 font-medium leading-tight text-center">
-                          {member.subtitle}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Social Media Icons */}
-                  <div className="flex justify-center space-x-4 mt-auto">
-                    <a
-                      href={member.social.linkedin}
-                      className="w-10 h-10 bg-gray-100 hover:bg-[#006398] text-gray-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                      aria-label={`${member.name} LinkedIn`}
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
         {/* CTA Section */}
-        <section className="py-24">
+        <section className="py-24 bg-black/80 backdrop-blur-sm">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -527,18 +539,18 @@ const AboutPage = () => {
                 Ready to Transform Your{" "}
                 <span className="text-[#00A8E0]">Business?</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-10">
+              <p className="text-lg text-gray-300 mb-10">
                 Let's discuss how our advanced cloud and AI solutions can
                 accelerate your digital transformation
               </p>
               <Link
-                href={"mailto:Hr@intel-cs.com"}
+                href={"mailto:info@intel-cs"}
                 className="bg-gradient-to-r from-[#006398] to-[#00A8E0] text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-[#00A8E0]/25 transition-all duration-300 transform hover:scale-105"
               >
                 Meet Our Team
               </Link>
               <Link
-                href={"/contact-us"}
+                href={"/form/consultationRequest"}
                 className="ml-4 bg-gradient-to-r from-[#006398] to-[#00A8E0] text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-[#00A8E0]/25 transition-all duration-300 transform hover:scale-105"
               >
                 Schedule Consultation
@@ -548,7 +560,6 @@ const AboutPage = () => {
         </section>
 
         {/* Footer */}
-
         <FooterContent />
       </div>
     </div>
