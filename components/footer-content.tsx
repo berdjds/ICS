@@ -49,7 +49,7 @@ export function FooterContent() {
           className="object-contain"
         />
         <p className="text-sm md:text-base text-white-500 font-bold max-w-md mx-auto">
-          Advanced Cloud & AI Solutions for Digital Transformation
+        Driving Digital Transformation Through IT Innovation
         </p>
       </motion.div>
 

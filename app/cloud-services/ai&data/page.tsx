@@ -150,36 +150,46 @@ export default function AIDataSolutionsPage() {
                   const IconComponent = service.icon;
                   return (
                     <motion.div
-                      key={service.title}
-                      className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.3 }}
-                      variants={cardVariants}
-                      transition={{ delay: (index + 1) * 0.1 }}
-                    >
-                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                        {service.title}
-                      </h3>
-                      <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        {service.features.map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center gap-2"
-                          >
-                            <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                            <span className="text-xs md:text-sm">
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      {/* <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
-                        Learn More{" "}
-                        <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
-                      </Button> */}
-                    </motion.div>
+  key={service.title}
+  className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm flex flex-col h-full"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={cardVariants}
+  transition={{ delay: (index + 1) * 0.1 }}
+  style={{ minHeight: '350px' }} // Reduced from 480px to 350px
+>
+  {/* Content Section - Compact spacing */}
+  <div className="flex flex-col h-full">
+    <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4" />
+    <h3 className="text-xl md:text-2xl font-bold mb-4 text-white leading-tight">
+      {service.title}
+    </h3>
+    
+    {/* Features list - Reduced spacing */}
+    <ul className="space-y-2 flex-grow">
+      {service.features.map((feature, featureIndex) => (
+        <li
+          key={featureIndex}
+          className="flex items-start gap-2"
+        >
+          <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0 mt-1" />
+          <span className="text-xs md:text-sm text-gray-300 leading-relaxed">
+            {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    {/* Button Section - Minimal top margin */}
+    <div className="mt-4">
+      <Button className="w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#0088c7] text-white text-sm md:text-base font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/25 transform hover:scale-105">
+        Learn More{" "}
+        <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
+      </Button>
+    </div>
+  </div>
+</motion.div>
                   );
                 })}
               </div>
@@ -202,61 +212,97 @@ export default function AIDataSolutionsPage() {
               </motion.div>
 
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+                className="space-y-8"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={sectionVariants}
               >
-                {[
-                  {
-                    icon: Heart,
-                    title: "Healthcare",
-                    description:
-                      "Medical imaging analysis, patient data insights",
-                  },
-                  {
-                    icon: ShoppingCart,
-                    title: "Retail",
-                    description:
-                      "Personalization engines, inventory optimization",
-                  },
-                  {
-                    icon: Factory,
-                    title: "Manufacturing",
-                    description:
-                      "Predictive maintenance, quality control automation",
-                  },
-                  {
-                    icon: FolderKanban,
-                    title: "Real Estate & Property Management",
-                    description: "Interactive Property Showcase",
-                  },
-                  {
-                    icon: BrainCircuit,
-                    title: "Financial/Insurance Services",
-                    description:
-                      "AI-powered claim processing, predictive risk modelling",
-                  },
-                ].map((application, index) => {
-                  const IconComponent = application.icon;
-                  return (
-                    <motion.div
-                      key={application.title}
-                      className="bg-gray-800/50 p-3 rounded-xl border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm text-center"
-                      variants={cardVariants}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <IconComponent className="w-12 h-12 md:w-16 md:h-16 text-[#006398] mx-auto mb-4" />
-                      <h3 className="text-lg md:text-xl font-bold mb-2">
-                        {application.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-gray-300">
-                        {application.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
+                {/* First row - 3 cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                  {[
+                    {
+                      icon: Heart,
+                      title: "Healthcare",
+                      description:
+                        "Medical imaging analysis and patient data insights",
+                    },
+                    {
+                      icon: ShoppingCart,
+                      title: "Retail",
+                      description:
+                        "Personalization engines and inventory optimization",
+                    },
+                    {
+                      icon: Factory,
+                      title: "Manufacturing",
+                      description:
+                        "Predictive maintenance and quality control automation",
+                    },
+                  ].map((application, index) => {
+                    const IconComponent = application.icon;
+                    return (
+                      <motion.div
+                        key={application.title}
+                        className="bg-gray-800/50 p-8 h-[300px] rounded-2xl border border-gray-700 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm text-center hover:transform hover:scale-105 shadow-lg hover:shadow-[#006398]/20"
+                        variants={cardVariants}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="h-full flex flex-col justify-center items-center space-y-6">
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#006398] to-[#00A8E0] rounded-xl flex items-center justify-center shadow-lg">
+                            <IconComponent className="w-8 h-8 text-white" />
+                          </div>
+                          <h3 className="text-xl font-bold text-white leading-tight">
+                            {application.title}
+                          </h3>
+                          <p className="text-base text-gray-300 leading-relaxed">
+                            {application.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* Second row - 2 cards centered */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
+                  {[
+                    {
+                      icon: FolderKanban,
+                      title: "Real Estate & Property",
+                      description:
+                        "Interactive property showcase and management solutions",
+                    },
+                    {
+                      icon: BrainCircuit,
+                      title: "Financial Services",
+                      description:
+                        "AI-powered claim processing and predictive risk modeling",
+                    },
+                  ].map((application, index) => {
+                    const IconComponent = application.icon;
+                    return (
+                      <motion.div
+                        key={application.title}
+                        className="bg-gray-800/50 p-8 h-[300px] rounded-2xl border border-gray-700 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm text-center hover:transform hover:scale-105 shadow-lg hover:shadow-[#006398]/20"
+                        variants={cardVariants}
+                        transition={{ delay: (index + 3) * 0.1 }}
+                      >
+                        <div className="h-full flex flex-col justify-center items-center space-y-6">
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#006398] to-[#00A8E0] rounded-xl flex items-center justify-center shadow-lg">
+                            <IconComponent className="w-8 h-8 text-white" />
+                          </div>
+                          <h3 className="text-xl font-bold text-white leading-tight">
+                            {application.title}
+                          </h3>
+                          <p className="text-base text-gray-300 leading-relaxed">
+                            {application.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </motion.div>
             </div>
           </section>
@@ -270,7 +316,7 @@ export default function AIDataSolutionsPage() {
                 viewport={{ once: true, amount: 0.3 }}
                 variants={sectionVariants}
               >
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
+                <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 md:mb-6">
                   Ready to Unlock Your Data's Potential?
                 </h2>
                 <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto px-4">

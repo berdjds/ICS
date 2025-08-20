@@ -180,10 +180,10 @@ export default function AISolutionsPage() {
                           </li>
                         ))}
                       </ul>
-                      {/* <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
+                      <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
                         Learn More{" "}
                         <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
-                      </Button> */}
+                      </Button>
                     </motion.div>
                   );
                 })}
@@ -207,7 +207,7 @@ export default function AISolutionsPage() {
               </motion.div>
 
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 max-w-7xl mx-auto"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
@@ -242,21 +242,36 @@ export default function AISolutionsPage() {
                 ].map((step, index) => (
                   <motion.div
                     key={step.number}
-                    className="bg-gray-800/50 p-4 md:p-6 rounded-lg text-center border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm"
+                    className="bg-gray-800/50 p-8 h-[400px] rounded-2xl text-center border border-gray-700 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm hover:transform hover:scale-105 shadow-lg hover:shadow-[#006398]/20 relative overflow-hidden"
                     variants={cardVariants}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-[#006398] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                      <span className="font-bold text-white text-sm md:text-base">
-                        {step.number}
-                      </span>
+                    {/* Background decoration */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#006398]/5 to-[#00A8E0]/5 rounded-full -translate-y-16 translate-x-16"></div>
+
+                    {/* Content wrapper with perfect centering */}
+                    <div className="relative z-10 h-full flex flex-col items-center justify-center space-y-8">
+                      {/* Number circle */}
+                      <div className="w-20 h-20 bg-gradient-to-br from-[#006398] to-[#00A8E0] rounded-full flex items-center justify-center shadow-2xl">
+                        <span className="font-bold text-white text-2xl">
+                          {step.number}
+                        </span>
+                      </div>
+
+                      {/* Title - fixed height container */}
+                      <div className="h-16 flex items-center justify-center">
+                        <h3 className="font-bold text-2xl text-white leading-tight text-center max-w-full">
+                          {step.title}
+                        </h3>
+                      </div>
+
+                      {/* Description - fixed height container */}
+                      <div className="h-20 flex items-center justify-center">
+                        <p className="text-lg text-gray-300 leading-relaxed text-center max-w-full">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-bold text-sm md:text-base mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-gray-300">
-                      {step.description}
-                    </p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -277,7 +292,7 @@ export default function AISolutionsPage() {
                   Transform your operations with intelligent Industry solutions.
                 </p>
                 <Link
-                  href={"/contact-us"}
+                  href={"/form/consultationRequest"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
                   Industry Consultation

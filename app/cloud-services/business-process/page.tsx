@@ -144,32 +144,44 @@ export default function BusinessProcessAutomationPage() {
                   const IconComponent = solution.icon;
                   return (
                     <motion.div
-                      key={solution.title}
-                      className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.3 }}
-                      variants={cardVariants}
-                      transition={{ delay: (index + 1) * 0.1 }}
-                    >
-                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                        {solution.title}
-                      </h3>
-                      <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        {solution.features.map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center gap-2"
-                          >
-                            <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                            <span className="text-xs md:text-sm">
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
+  key={solution.title}
+  className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm flex flex-col h-full"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={cardVariants}
+  transition={{ delay: (index + 1) * 0.1 }}
+  style={{ minHeight: '350px' }} // Fixed height for alignment
+>
+  {/* Content wrapper - takes up available space */}
+  <div className="flex-grow">
+    <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
+    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white">
+      {solution.title}
+    </h3>
+    <ul className="space-y-2 md:space-y-3">
+      {solution.features.map((feature, featureIndex) => (
+        <li
+          key={featureIndex}
+          className="flex items-center gap-2"
+        >
+          <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
+          <span className="text-xs md:text-sm text-gray-300">
+            {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* Button Section - Always at bottom */}
+  <div className="mt-4">
+    <Button className="w-full bg-gradient-to-r from-[#006398] to-[#00A8E0] hover:from-[#004d7a] hover:to-[#0088c7] text-white text-sm md:text-base font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#006398]/25 transform hover:scale-105">
+      Learn More{" "}
+      <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
+    </Button>
+  </div>
+</motion.div>
                   );
                 })}
               </div>

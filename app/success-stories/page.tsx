@@ -84,11 +84,6 @@ export default function SuccessStoriesPage() {
       description: "Google Cloud Partner",
     },
     {
-      name: "Oracle",
-      logo: "/partners/oracle.png",
-      description: "Oracle Partner",
-    },
-    {
       name: "Palo Alto Networks",
       logo: "/partners/palo2.png",
       description: "Palo Alto Networks Partner",
@@ -156,12 +151,12 @@ export default function SuccessStoriesPage() {
     },
     {
       name: "Shamal Holding",
-      logo: "/customers/shamal-holding-logo.png",
+      logo: "/customers/shamal.svg",
       projects: ["22 Websites Migrated to the cloud"],
     },
     {
       name: "Samcom",
-      logo: "/customers/samcom-logo.png",
+      logo: "/customers/SAMCOM.png",
       projects: ["Supplier Portal hosted on cloud"],
     },
     {
@@ -179,43 +174,47 @@ export default function SuccessStoriesPage() {
   const testimonials = [
     {
       quote:
-        "Working with Intel CS has been an outstanding experience. Their cloud services have been nothing short of exceptional, with a dedicated team of professionals who ensured everything was tailored to our needs.",
+        "Working with iNTEL-CS has been an outstanding experience. Their cloud services have been nothing short of exceptional, with a dedicated team of professionals who ensured everything was tailored to our needs.",
       fullQuote:
         "From seamless integration to ongoing support, their commitment to delivering top notch solutions has truly elevated our operations. We are extremely satisfied with the results and look forward to continuing our collaboration for future projects.",
       author: "Sufyan Areed",
       position: "CTO",
       company: "Access Insurance Brokers",
       service: "Cloud Solutions",
+      logo: "/quote/access.png",
     },
     {
       quote:
-        "Intel CS impressed us with their professionalism and speed. We recently collaborated with Intel CS for our cloud solution optimizations.",
+        "iNTEL-CS impressed us with their professionalism and speed. We recently collaborated with Intel CS for our cloud solution optimizations.",
       fullQuote:
         "I was impressed with their professionalism and timely completion of job. All the jobs I really recommend them as a technology partner.",
       author: "Shajan Thomas",
       position: "CTO",
       company: "LogisEye Solutions FZCO",
       service: "Cloud Solution Modernization",
+      logo: "/quote/Logiseye.png",
     },
     {
       quote:
-        "Intel CS delivered a seamless, customized portal that transformed our operations and client service.",
+        "iNTEL-CS delivered a seamless, customized portal that transformed our operations and client service.",
       fullQuote:
-        "Intel CS team demonstrated not only technical expertise but also a deep understanding of our specific needs. Their collaborative approach made the entire process seamless, allowing us to achieve our vision effectively. We now have a powerful tool that streamlines our operation and enhances our customer interaction.",
+        "iNTEL-CS team demonstrated not only technical expertise but also a deep understanding of our specific needs. Their collaborative approach made the entire process seamless, allowing us to achieve our vision effectively. We now have a powerful tool that streamlines our operation and enhances our customer interaction.",
       author: "Said Saqer",
       position: "CEO",
       company: "Samcom Group",
       service: "Custom Portal Development",
+      logo: "/customers/SAMCOM.png",
     },
     {
       quote:
-        "Intel CS helped us streamline operations with tailored, cost effective and reliable support.",
+        "iNTEL-CS helped us streamline operations with tailored, cost effective and reliable support.",
       fullQuote:
-        "Intel CS provided exactly the support we needed to optimize our systems. They understood our unique needs and delivered a smooth, efficient solution. Their team's dedication and responsiveness made the entire process easy and stress-free.",
+        "iNTEL-CS provided exactly the support we needed to optimize our systems. They understood our unique needs and delivered a smooth, efficient solution. Their team's dedication and responsiveness made the entire process easy and stress-free.",
       author: "Eng. Sanad A. Qader Al Hashimi",
       position: "Business Development Manager",
       company: "THTC",
       service: "Cloud Migration & Modernization",
+      logo: "/quote/THTC.png",
     },
   ];
 
@@ -356,57 +355,49 @@ export default function SuccessStoriesPage() {
                   const IconComponent = caseStudy.icon;
                   return (
                     <motion.div
-                      key={caseStudy.title}
-                      className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.3 }}
-                      variants={cardVariants}
-                      transition={{ delay: (index + 1) * 0.1 }}
-                    >
-                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                        {caseStudy.title}
-                      </h3>
-                      <div className="space-y-3 mb-4 md:mb-6">
-                        <div>
-                          <span className="font-semibold text-[#006398]">
-                            Client:{" "}
-                          </span>
-                          <span className="text-sm md:text-base text-gray-300">
-                            {caseStudy.client}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-[#006398]">
-                            Challenge:{" "}
-                          </span>
-                          <span className="text-sm md:text-base text-gray-300">
-                            {caseStudy.challenge}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-[#006398]">
-                            Solution:{" "}
-                          </span>
-                          <span className="text-sm md:text-base text-gray-300">
-                            {caseStudy.solution}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-[#006398]">
-                            Results:{" "}
-                          </span>
-                          <span className="text-sm md:text-base text-gray-300">
-                            {caseStudy.results}
-                          </span>
-                        </div>
-                      </div>
-                      {/* <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
-                        Read Full Case Study{" "}
-                        <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
-                      </Button> */}
-                    </motion.div>
+  key={caseStudy.title}
+  className="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={cardVariants}
+  transition={{ delay: (index + 1) * 0.1 }}
+>
+  <IconComponent className="w-12 h-12 text-[#006398] mb-6" />
+  <h3 className="text-2xl font-bold mb-6 text-white">
+    {caseStudy.title}
+  </h3>
+  
+  <div className="space-y-6">
+    <div>
+      <h4 className="font-bold text-[#006398] text-lg mb-2">Client</h4>
+      <p className="text-gray-300 text-sm leading-relaxed">
+        {caseStudy.client}
+      </p>
+    </div>
+    
+    <div>
+      <h4 className="font-bold text-[#006398] text-lg mb-2">Challenge</h4>
+      <p className="text-gray-300 text-sm leading-relaxed">
+        {caseStudy.challenge}
+      </p>
+    </div>
+    
+    <div>
+      <h4 className="font-bold text-[#006398] text-lg mb-2">Solution</h4>
+      <p className="text-gray-300 text-sm leading-relaxed">
+        {caseStudy.solution}
+      </p>
+    </div>
+    
+    <div>
+      <h4 className="font-bold text-[#006398] text-lg mb-2">Results</h4>
+      <p className="text-gray-300 text-sm leading-relaxed">
+        {caseStudy.results}
+      </p>
+    </div>
+  </div>
+</motion.div>
                   );
                 })}
               </div>
@@ -573,14 +564,20 @@ export default function SuccessStoriesPage() {
                 <p className="text-gray-400 mb-8">
                   Trusted by leading organizations
                 </p>
-                <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                <div className="flex flex-wrap justify-center items-center gap-8 ">
                   {testimonials.map((testimonial, index) => (
                     <div
                       key={index}
-                      className="text-white font-semibold text-sm hover:text-[#006398] transition-colors cursor-pointer"
+                      className="text-white font-semibold text-sm hover:text-[#006398] transition-colors cursor-pointer hover:bg-blue-300 p-2"
                       onClick={() => goToSlide(index)}
                     >
-                      {testimonial.company}
+                      <Image
+                        alt={testimonial.company}
+                        src={testimonial.logo}
+                        width={100}
+                        height={50}
+                      ></Image>
+                      {/* {testimonial.company} */}
                     </div>
                   ))}
                 </div>
@@ -766,79 +763,7 @@ export default function SuccessStoriesPage() {
             </div>
           </section>
 
-          {/* Industry Impact Section */}
-          <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16 bg-gray-900/30 backdrop-blur-sm">
-            <div className="container mx-auto max-w-6xl">
-              <motion.div
-                className="text-center mb-12 md:mb-16"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={sectionVariants}
-              >
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
-                  Industry Impact
-                </h2>
-                <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
-                  Our solutions have transformed operations across:
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={sectionVariants}
-              >
-                {[
-                  {
-                    icon: DollarSign,
-                    industry: "Financial Services",
-                    count: "15+ projects",
-                  },
-                  {
-                    icon: Heart,
-                    industry: "Healthcare",
-                    count: "10+ implementations",
-                  },
-                  {
-                    icon: ShoppingCart,
-                    industry: "Retail & E-commerce",
-                    count: "20+ platforms",
-                  },
-                  {
-                    icon: Factory,
-                    industry: "Manufacturing",
-                    count: "12+ IoT deployments",
-                  },
-                  {
-                    icon: Building,
-                    industry: "Government",
-                    count: "8+ digital transformation initiatives",
-                  },
-                ].map((impact, index) => {
-                  const IconComponent = impact.icon;
-                  return (
-                    <motion.div
-                      key={impact.industry}
-                      className="bg-gray-800/50 p-6 md:p-8 rounded-xl border border-gray-700 hover:border-[#006398] transition-colors backdrop-blur-sm text-center"
-                      variants={cardVariants}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <IconComponent className="w-12 h-12 md:w-16 md:h-16 text-[#006398] mx-auto mb-4" />
-                      <h3 className="text-lg md:text-xl font-bold mb-2">
-                        {impact.industry}
-                      </h3>
-                      <p className="text-sm md:text-base text-gray-300">
-                        {impact.count}
-                      </p>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </div>
-          </section>
+          
 
           {/* CTA Section */}
           <section className="py-12 md:py-20 px-4 md:px-8 lg:px-16">
@@ -857,7 +782,7 @@ export default function SuccessStoriesPage() {
                   business with proven solutions.
                 </p>
                 <Link
-                  href={"/contact-us"}
+                  href={"/form/consultationRequest"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
                   Request Proposal

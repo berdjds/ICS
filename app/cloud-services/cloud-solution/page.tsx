@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
@@ -39,6 +39,15 @@ const cardVariants = {
 };
 
 export default function CloudSolutionsPage() {
+  const [expandedCards, setExpandedCards] = useState<{ [key: number]: boolean }>({});
+
+  const toggleCard = (index: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
   return (
     <>
       <div className="bg-black text-white relative">
@@ -147,34 +156,36 @@ export default function CloudSolutionsPage() {
                   return (
                     <motion.div
                       key={service.title}
-                      className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm"
+                      className="bg-gray-900/50 p-6 md:p-8 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm flex flex-col h-full"
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.3 }}
                       variants={cardVariants}
                       transition={{ delay: (index + 1) * 0.1 }}
                     >
-                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                        {service.title}
-                      </h3>
-                      <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                        {service.features.map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center gap-2"
-                          >
-                            <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
-                            <span className="text-xs md:text-sm">
-                              {feature}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                      {/* <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base">
+                      <div className="flex-grow">
+                        <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mb-4 md:mb-6" />
+                        <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+                          {service.title}
+                        </h3>
+                        <ul className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                          {service.features.map((feature, featureIndex) => (
+                            <li
+                              key={featureIndex}
+                              className="flex items-center gap-2"
+                            >
+                              <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#006398] flex-shrink-0" />
+                              <span className="text-xs md:text-sm">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <Button className="w-full bg-[#006398] hover:bg-[#004d7a] text-white text-sm md:text-base mt-auto">
                         Learn More{" "}
                         <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-2" />
-                      </Button> */}
+                      </Button>
                     </motion.div>
                   );
                 })}
@@ -299,15 +310,17 @@ export default function CloudSolutionsPage() {
                   return (
                     <motion.div
                       key={benefit.title}
-                      className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm text-center"
+                      className="bg-gray-900/50 p-10 lg:p-12 min-h-[380px] lg:min-h-[420px] rounded-3xl border border-gray-800 hover:border-[#006398] transition-all duration-300 backdrop-blur-sm text-center group hover:transform hover:scale-105 shadow-2xl hover:shadow-[#006398]/20"
                       variants={cardVariants}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-[#006398] mx-auto mb-4" />
-                      <h3 className="text-lg md:text-xl font-bold mb-3">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-gray-300">
+                      <div className="mb-8">
+                        <IconComponent className="w-20 h-20 lg:w-24 lg:h-24 text-[#006398] mx-auto mb-6 group-hover:text-[#00A8E0] transition-colors duration-300" />
+                        <h3 className="text-2xl lg:text-3xl font-bold mb-6 text-white leading-tight">
+                          {benefit.title}
+                        </h3>
+                      </div>
+                      <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
                         {benefit.description}
                       </p>
                     </motion.div>
@@ -334,7 +347,7 @@ export default function CloudSolutionsPage() {
                   solutions that deliver measurable results.
                 </p>
                 <Link
-                  href={"/contact-us"}
+                  href={"/form/consultation"}
                   className="bg-[#006398] hover:bg-[#004d7a] text-white px-6 md:px-8 py-2 md:py-3 text-base md:text-lg font-semibold rounded-full"
                 >
                   Schedule Cloud Assessment
